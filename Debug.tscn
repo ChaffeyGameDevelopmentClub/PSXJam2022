@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Prototype/Orange/texture_01.png" type="Texture" id=1]
 [ext_resource path="res://ShipEntity.tscn" type="PackedScene" id=2]
+[ext_resource path="res://player.gd" type="Script" id=3]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 1 )
@@ -11,15 +12,25 @@ uv1_triplanar = true
 material = SubResource( 1 )
 size = Vector2( 1000, 1000 )
 
+[sub_resource type="CubeMesh" id=3]
+size = Vector3( 30, 30, 1.987 )
+
 [node name="World" type="Spatial"]
 
 [node name="CSGMesh" type="CSGMesh" parent="."]
 mesh = SubResource( 2 )
 
-[node name="ShipEntity" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.31165, 0 )
-linear_damp = 0.0
+[node name="player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.56562, 5.2098, 10.0527 )
+can_sleep = false
 angular_damp = 0.0
+script = ExtResource( 3 )
+thrust_strength = 1.0
+boost_strength = 200.0
 
-[node name="Camera" type="Camera" parent="ShipEntity"]
-transform = Transform( -0.0598639, 0, 0.998207, 0, 1, 0, -0.998207, 0, -0.0598639, 3.35791, 0, 0 )
+[node name="Camera" type="Camera" parent="player"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.85575, 0 )
+
+[node name="CSGMesh2" type="CSGMesh" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.17429, 22.5688 )
+mesh = SubResource( 3 )

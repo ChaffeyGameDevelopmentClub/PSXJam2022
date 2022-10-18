@@ -1,6 +1,6 @@
 extends RigidBody
 
-class_name ShipEntity
+
 
 onready var CenterOfMass = $CenterOfMass
 onready var Heading = $Heading
@@ -22,7 +22,10 @@ var thrust_multiplier = 0
 export (float) var ship_linear_damp = 2
 export (float) var ship_angular_damp = 2
 export (float) var boost_time = 0.5
-export (float) var boost_strength = 20
+export (float) var boost_strength = 200
+
+var sen = 0.01
+
 
 var boosting = false
 
@@ -31,6 +34,7 @@ func _ready():
 	current_hull_integrity = hull_integrity
 	current_shield_integrity = shield_integrity
 	ShieldTimer.wait_time = 0.5
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(delta):
 	if (flight_assist):
@@ -39,11 +43,15 @@ func _physics_process(delta):
 	else:
 		linear_damp = 0
 		angular_damp = 0
+	if Input.is_action_pressed("W"):
+			add_force(self.transform.basis.z*100, Vector3.ZERO)
 	
 	if not boosting:
 		add_force(self.transform.basis.z*thrust_strength*thrust_multiplier, Vector3.ZERO)
 	else:
 		add_force(self.transform.basis.z*boost_strength, Vector3.ZERO)
+	if Input.is_action_just_pressed("Q"):
+		get_tree().quit()
 		
 
 #Takes a value from -1 to 1
@@ -59,6 +67,11 @@ func start_boost():
 func _on_BoostTimer_timeout():
 	boosting = false
 
-
-
+func _input(event):
+	if event is InputEventMouseMotion:
+		var movement = event.relative
+		rotation.x += deg2rad(movement.y * .02 )
+		rotation.x = clamp(rotation.x, deg2rad(-90), deg2rad(90))
+		rotation.y += -deg2rad(movement.x * .02)
+		
 

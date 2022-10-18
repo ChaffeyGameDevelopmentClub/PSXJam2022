@@ -22,4 +22,5 @@ linear_damp = 0.0
 angular_damp = 0.0
 
 [node name="Camera" type="Camera" parent="ShipEntity"]
-transform = Transform( -0.0598639, 0, 0.998207, 0, 1, 0, -0.998207, 0, -0.0598639, 3.35791, 0, 0 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.122211, 1.17497, 0.677539 )
+visible = false

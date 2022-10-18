@@ -2,7 +2,7 @@ extends RigidBody
 
 var shoot = false
 var damage = 50
-var speed = 8
+var speed = 3
 
 func _ready():
 	set_as_toplevel(true)

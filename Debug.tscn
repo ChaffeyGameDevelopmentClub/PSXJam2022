@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Prototype/Orange/texture_01.png" type="Texture" id=1]
 [ext_resource path="res://ShipEntity.tscn" type="PackedScene" id=2]
+[ext_resource path="res://WeaponSystem/Skybox.tscn" type="PackedScene" id=3]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 1 )
@@ -13,14 +14,16 @@ size = Vector2( 1000, 1000 )
 
 [node name="World" type="Spatial"]
 
+[node name="Skybox" parent="." instance=ExtResource( 3 )]
+visible = false
+
 [node name="CSGMesh" type="CSGMesh" parent="."]
 mesh = SubResource( 2 )
 
 [node name="ShipEntity" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.31165, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43678, 0 )
 linear_damp = 0.0
 angular_damp = 0.0
 
 [node name="Camera" type="Camera" parent="ShipEntity"]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.122211, 1.17497, 0.677539 )
-visible = false
+transform = Transform( 0.851306, 0, 0.52467, 0, 1, 0, -0.52467, 0, 0.851306, 3.17086, 1.17497, 5.91234 )

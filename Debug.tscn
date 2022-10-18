@@ -19,4 +19,4 @@ mesh = SubResource( 2 )
 [node name="ShipEntity" parent="." instance=ExtResource( 2 )]
 linear_damp = 0.0
 angular_damp = 0.0
-flight_assist = false
+ship_linear_damp = 2.0

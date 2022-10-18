@@ -17,6 +17,7 @@ size = Vector2( 1000, 1000 )
 mesh = SubResource( 2 )
 
 [node name="ShipEntity" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.31165, 0 )
 linear_damp = 0.0
 angular_damp = 0.0
 

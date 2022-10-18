@@ -41,9 +41,10 @@ func _physics_process(delta):
 		angular_damp = 0
 	
 	if not boosting:
-		add_force(Vector3.BACK*thrust_strength*thrust_multiplier, Vector3.ZERO)
+		add_force(self.transform.basis.z*thrust_strength*thrust_multiplier, Vector3.ZERO)
 	else:
-		add_force(Vector3.BACK*boost_strength, Vector3.ZERO)
+		add_force(self.transform.basis.z*boost_strength, Vector3.ZERO)
+		
 
 #Takes a value from -1 to 1
 func set_main_thruster(thrust_amount:float):

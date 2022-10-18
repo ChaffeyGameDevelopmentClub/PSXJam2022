@@ -42,5 +42,11 @@ wait_time = 0.5
 [node name="BoostTimer" type="Timer" parent="."]
 wait_time = 0.5
 
+[node name="Hurtbox" type="Area" parent="."]
+
+[node name="Hurtboxshape" type="CollisionShape" parent="Hurtbox"]
+shape = SubResource( 3 )
+
 [connection signal="timeout" from="ShieldTimer" to="." method="_on_ShieldTimer_timeout"]
 [connection signal="timeout" from="BoostTimer" to="." method="_on_BoostTimer_timeout"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]

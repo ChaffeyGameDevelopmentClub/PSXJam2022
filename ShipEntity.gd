@@ -46,6 +46,13 @@ func _physics_process(delta):
 		add_force(self.transform.basis.z*boost_strength, Vector3.ZERO)
 		
 
+func take_damage(amount: float):
+	var temp = current_shield_integrity
+	current_shield_integrity -= amount
+	current_shield_integrity = clamp(current_shield_integrity, 0, shield_integrity)
+	if current_shield_integrity <= 0:
+		current_hull_integrity -= (amount - temp)
+
 #Takes a value from -1 to 1
 func set_main_thruster(thrust_amount:float):
 	thrust_amount = clamp(thrust_amount, -1, 1)
@@ -58,3 +65,8 @@ func start_boost():
 
 func _on_BoostTimer_timeout():
 	boosting = false
+	
+func _on_Hurtbox_area_entered(area):
+	pass
+
+	

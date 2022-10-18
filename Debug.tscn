@@ -19,4 +19,6 @@ mesh = SubResource( 2 )
 [node name="ShipEntity" parent="." instance=ExtResource( 2 )]
 linear_damp = 0.0
 angular_damp = 0.0
-ship_linear_damp = 2.0
+
+[node name="Camera" type="Camera" parent="ShipEntity"]
+transform = Transform( -0.0598639, 0, 0.998207, 0, 1, 0, -0.998207, 0, -0.0598639, 3.35791, 0, 0 )

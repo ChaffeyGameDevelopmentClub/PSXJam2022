@@ -40,5 +40,8 @@ debug_shape_thickness = 4
 [node name="ShieldTimer" type="Timer" parent="."]
 wait_time = 0.5
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 0.00137884, 0, 0.999999, 0, 1, 0, -0.999999, 0, 0.00137884, 5.89768, 0.113281, 0 )
+[node name="BoostTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="ShieldTimer" to="." method="_on_ShieldTimer_timeout"]
+[connection signal="timeout" from="BoostTimer" to="." method="_on_BoostTimer_timeout"]

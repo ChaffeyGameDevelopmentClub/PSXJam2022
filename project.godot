@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "RigidBody",
+"class": "ShipEntity",
+"language": "GDScript",
+"path": "res://ShipEntity.gd"
+} ]
+_global_script_class_icons={
+"ShipEntity": ""
+}
+
 [application]
 
 config/name="PSXJam2022"
@@ -15,9 +25,8 @@ config/icon="res://icon.png"
 
 [display]
 
-window/size/width=256
-window/size/height=224
-window/size/fullscreen=true
+window/size/width=1920
+window/size/height=1080
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 

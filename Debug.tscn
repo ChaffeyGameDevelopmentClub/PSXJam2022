@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Prototype/Orange/texture_01.png" type="Texture" id=1]
+[ext_resource path="res://ShipEntity.tscn" type="PackedScene" id=2]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 1 )
@@ -14,3 +15,8 @@ size = Vector2( 1000, 1000 )
 
 [node name="CSGMesh" type="CSGMesh" parent="."]
 mesh = SubResource( 2 )
+
+[node name="ShipEntity" parent="." instance=ExtResource( 2 )]
+linear_damp = 0.0
+angular_damp = 0.0
+flight_assist = false

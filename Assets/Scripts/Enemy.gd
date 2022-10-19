@@ -5,7 +5,7 @@ onready var pitch_controller = $PitchController
 onready var yaw_controller = $YawController
 onready var roll_controller = $RollController
 
-var state = IDLE
+var state = SEEKING
 
 enum {
 	IDLE,
@@ -26,10 +26,11 @@ func _on_Hurtbox_area_entered(area):
 	
 func _physics_process(delta):
 	var player_dist = self.translation.distance_to(player.translation)
-	if player_dist < 30:
+	if player_dist < 50:
 		state = FLEEING
-	elif (player_dist < 700 and player_dist > 100 ):
+	elif (player_dist < 2000 and player_dist > 300 ):
 		state = SEEKING
+
 	
 	#if self.translation.distance_to(player.translation) >= 1000:
 		#state = IDLE
@@ -69,4 +70,3 @@ func _physics_process(delta):
 			
 			add_pitch(pitch_controller.calculate(-v3, rotation.x))
 			add_roll(roll_controller.calculate(0, self.rotation.z))
-

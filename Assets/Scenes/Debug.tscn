@@ -25,7 +25,7 @@ mesh = SubResource( 2 )
 
 [node name="Enemy" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4221, 42.4143, -41.7797 )
-thrust_strength = 70.0
+thrust_strength = 120.0
 
 [node name="ShipEntity" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.999509, -0.0313235, 0, 0.0313235, 0.999509, 0, 0, 0, 1, 30.774, 32.8272, 106.497 )

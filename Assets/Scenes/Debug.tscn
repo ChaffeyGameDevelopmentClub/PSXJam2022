@@ -22,10 +22,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.109857, 1.15107, 3.32924 )
 damage = 10
 
 [node name="ShipEntity" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.27956, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.515232, 0.573791, -3.12812 )
 linear_velocity = Vector3( 0, 0, 2 )
 hull_integrity = 10.0
 shield_integrity = 10.0
 
 [node name="Camera" type="Camera" parent="ShipEntity"]
-transform = Transform( 0.13537, 0, 0.990795, 0, 1, 0, -0.990795, 0, 0.13537, 2.57595, 0, 0 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0287085, 0, 0.847485 )

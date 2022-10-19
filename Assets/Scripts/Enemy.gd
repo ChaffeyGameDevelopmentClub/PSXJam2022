@@ -14,29 +14,27 @@ func _ready():
 func _on_Hurtbox_area_entered(area):
 	var projectile = area.get_parent()
 	if projectile.is_in_group("player"):
-		take_damage(projectile.damage) 
+		#take_damage(projectile.damage) 
+		pass
 
 
 	
 func _physics_process(delta):
-	var angle = self.global_translation.direction_to(player.global_translation)
-	print(angle)
-	var target = self.translation.direction_to(player.translation)
-	#print(target.x)
-	target_x = -target.x
-	target_y = target.y
-	#print(target)
-	add_torque(Vector3.LEFT*-pitch_controller.calculate(0, self.rotation.x))
-	print(rotation.x)
-	#add_pitch(pitch_controller.calculate(target_x, self.rotation.x))
-	#add_yaw(yaw_controller.calculate(target_y, self.rotation.y))
-	#print(diff)
-	#print(rotation.x, " " ,rotation.y)
 
-
+	var v1 = Vector2(self.translation.x, self.translation.z)
+	var v2 = Vector2(player.translation.x, player.translation.z)
+	var v3 = (v1 - v2).angle()
+	v3 += PI/2
 	
-	#add_roll(roll_controller.calculate(target.z, self.rotation.z))
+	add_yaw(yaw_controller.calculate(-v3, rotation.y))
 	
-
+	v1 = Vector2(self.translation.y, self.translation.z)
+	v2 = Vector2(player.translation.y, player.translation.z)
+	v3 = (v1 - v2).angle()
+	v3 += PI/2
 	
+	add_pitch(pitch_controller.calculate(v3, rotation.x))
+	add_roll(roll_controller.calculate(0, self.rotation.z))
 	
+	if Input.is_action_pressed("ui_down"):
+		add_torque(Vector3.DOWN)

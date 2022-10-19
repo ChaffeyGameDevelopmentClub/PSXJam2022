@@ -15,6 +15,10 @@ func _ready():
 	$IterationTimer.set_wait_time(_dt)
 
 func calculate(setpoint, pv):
+	if (pv - setpoint < -PI):
+		pv += TAU
+	elif (pv - setpoint > PI):
+		pv -= TAU
 	var error = setpoint - pv
 	var Pout = _Kp * error
 	

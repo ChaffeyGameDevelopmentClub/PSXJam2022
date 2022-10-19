@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Textures/Prototype/Orange/texture_01.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Scenes/Projectile.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Scenes/Enemy.tscn" type="PackedScene" id=4]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 1 )
@@ -15,17 +16,23 @@ size = Vector2( 1000, 1000 )
 [node name="World" type="Spatial"]
 
 [node name="CSGMesh" type="CSGMesh" parent="."]
+invert_faces = true
+mesh = SubResource( 2 )
+
+[node name="CSGMesh2" type="CSGMesh" parent="."]
 mesh = SubResource( 2 )
 
 [node name="Projectile" parent="." groups=["enemy"] instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.109857, 1.15107, 3.32924 )
 damage = 10
 
-[node name="ShipEntity" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.27956, 0 )
-linear_velocity = Vector3( 0, 0, 2 )
-hull_integrity = 10.0
-shield_integrity = 10.0
+[node name="Enemy" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.125, 21, 18.75 )
+thrust_strength = 0.0
 
-[node name="Camera" type="Camera" parent="ShipEntity"]
-transform = Transform( 0.13537, 0, 0.990795, 0, 1, 0, -0.990795, 0, 0.13537, 2.57595, 0, 0 )
+[node name="Camera" type="Camera" parent="Enemy"]
+transform = Transform( -0.998264, -1.75571e-09, 0.058906, 0, 1, 2.98053e-08, -0.058906, 2.97536e-08, -0.998264, 0, 0, 3 )
+
+[node name="ShipEntity" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 42, 80.375 )
+thrust_strength = 0.0

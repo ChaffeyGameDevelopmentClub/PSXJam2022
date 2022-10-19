@@ -66,9 +66,9 @@ _Kd = 4.0
 
 [node name="RollController" type="Node" parent="." index="12"]
 script = ExtResource( 4 )
-_Kp = 20.0
-_Ki = 10.0
-_Kd = 0.0
+_Kp = 15.0
+_Ki = 0.0
+_Kd = 4.0
 
 [node name="IterationTimer" type="Timer" parent="RollController" index="0"]
 

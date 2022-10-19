@@ -15,10 +15,12 @@ size = Vector2( 1000, 1000 )
 [node name="World" type="Spatial"]
 
 [node name="CSGMesh" type="CSGMesh" parent="."]
+visible = false
 invert_faces = true
 mesh = SubResource( 2 )
 
 [node name="CSGMesh2" type="CSGMesh" parent="."]
+visible = false
 mesh = SubResource( 2 )
 
 [node name="Enemy" parent="." instance=ExtResource( 4 )]

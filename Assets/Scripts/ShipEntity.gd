@@ -62,6 +62,15 @@ func start_boost():
 	BoostTimer.wait_time = boost_time
 	BoostTimer.start()
 	boosting = true
+	
+func add_pitch(amount):
+	add_torque(transform.basis.x*amount)
+	
+func add_yaw(amount):
+	add_torque(transform.basis.y*amount)
+	
+func add_roll(amount):
+	add_torque(transform.basis.z*amount)
 
 func _on_BoostTimer_timeout():
 	boosting = false

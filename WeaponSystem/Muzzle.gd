@@ -1,7 +1,7 @@
 extends Spatial
-
-onready var homing_projectile = preload("res://WeaponSystem/HomingProjectile.tscn")
-onready var muzzle_aim = $MuzzleAim
+onready var homing_projectile = preload("res://WeaponSystem/Missile/HomingMissile.tscn")
+#onready var homing_projectile = preload("res://WeaponSystem/HomingProjectile.tscn")
+onready var muzzle_aim = $Muzzle/MuzzleAim
 onready var target = null
 
 

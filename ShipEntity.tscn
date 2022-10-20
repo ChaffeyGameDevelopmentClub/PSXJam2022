@@ -1,13 +1,14 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://ShipEntity.gd" type="Script" id=1]
-[ext_resource path="res://WeaponSystem/Gun.tscn" type="PackedScene" id=2]
+[ext_resource path="res://WeaponSystem/MissileLauncher.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CapsuleShape" id=3]
 
 [sub_resource type="CapsuleMesh" id=4]
 
 [node name="ShipEntity" type="RigidBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41804, 0 )
 gravity_scale = 0.0
 linear_damp = 2.0
 angular_damp = 2.0
@@ -43,11 +44,11 @@ wait_time = 0.5
 [node name="BoostTimer" type="Timer" parent="."]
 wait_time = 0.5
 
-[node name="Gun" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.521562, 0.201727, 1.31534 )
+[node name="MissileLauncher" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.521562, -0.975451, 1.84163 )
 
-[node name="Gun2" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.499901, 0.201727, 1.31534 )
+[node name="MissileLauncher2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.5, -0.975, 1.84129 )
 
 [connection signal="timeout" from="ShieldTimer" to="." method="_on_ShieldTimer_timeout"]
 [connection signal="timeout" from="BoostTimer" to="." method="_on_BoostTimer_timeout"]

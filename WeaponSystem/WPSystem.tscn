@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Prototype/Orange/texture_01.png" type="Texture" id=1]
-[ext_resource path="res://WeaponSystem/Gun.tscn" type="PackedScene" id=2]
+[ext_resource path="res://WeaponSystem/MissileLauncher.tscn" type="PackedScene" id=2]
 [ext_resource path="res://WeaponSystem/Enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://WeaponSystem/Skybox.tscn" type="PackedScene" id=4]
 
@@ -19,19 +19,18 @@ size = Vector2( 25, 200 )
 [node name="CSGMesh" type="CSGMesh" parent="."]
 mesh = SubResource( 2 )
 
-[node name="Gun" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2, 0 )
-
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( -0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, 3, 2, -1 )
-visible = false
+far = 1650.0
 
 [node name="Camera3" type="Camera" parent="."]
 transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 8, 2, 62 )
 
+[node name="Gun" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2, 0 )
+
 [node name="Camera2" type="Camera" parent="."]
 transform = Transform( -1, 0, 0, 0, 0.866025, 0.5, 0, 0.5, -0.866025, 4.76837e-07, 3, -1 )
-visible = false
 
 [node name="Enemy" parent="." instance=ExtResource( 3 )]
 transform = Transform( -4.37114e-09, 0, 0.5, 0, 0.7, 0, -0.1, 0, -2.18557e-08, 6, 2, 64 )

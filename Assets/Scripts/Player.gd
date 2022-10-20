@@ -30,6 +30,16 @@ func _physics_process(delta):
 		set_main_thruster(-0.5)
 	else:
 		set_main_thruster(0)
+		
+	if Input.is_action_pressed("ui_up"):
+		add_central_force(self.transform.basis.y)
+	elif Input.is_action_pressed("ui_down"):
+		add_central_force(-self.transform.basis.y)
+		
+	if Input.is_action_pressed("ui_right"):
+		add_central_force(-self.transform.basis.x)
+	elif Input.is_action_pressed("ui_left"):
+		add_central_force(self.transform.basis.x)
 
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()

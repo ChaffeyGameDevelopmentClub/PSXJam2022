@@ -9,14 +9,28 @@ func _on_Hurtbox_area_entered(area):
 func _input(event):
 	if event is InputEventMouseMotion:
 		var movement = event.relative
-		rotation.x += deg2rad(movement.y * .2 )
-		rotation.x = clamp(rotation.x, deg2rad(-90), deg2rad(90))
-		rotation.y += -deg2rad(movement.x * .2)
-		rotation.y = clamp(rotation.y, deg2rad(-180), deg2rad(180))
+		add_yaw(-deg2rad(movement.x * 2.3))
+		add_pitch(deg2rad(movement.y * 2.3 ))
+		
+		#rotation.x += deg2rad(movement.y * .2 )
+		#rotation.x = clamp(rotation.x, deg2rad(-90), deg2rad(90))
+		#rotation.y += 
+		#rotation.y = clamp(rotation.y, deg2rad(-180), deg2rad(180))
 	
 func _physics_process(delta):
+	
+	if Input.is_action_pressed("roll_left"):
+		add_roll(-1)
+	if Input.is_action_pressed("roll_right"):
+		add_roll(1)
+		
 	if Input.is_action_pressed("move_forward"):
-			add_force(self.transform.basis.z*100, Vector3.ZERO)
+			set_main_thruster(1)
+	elif Input.is_action_pressed("move_backward"):
+		set_main_thruster(-0.5)
+	else:
+		set_main_thruster(0)
+
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
 func _ready():

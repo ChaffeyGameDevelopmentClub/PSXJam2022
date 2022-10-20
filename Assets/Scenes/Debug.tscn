@@ -29,8 +29,12 @@ thrust_strength = 120.0
 
 [node name="ShipEntity" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.999509, -0.0313235, 0, 0.0313235, 0.999509, 0, 0, 0, 1, 30.774, 32.8272, 106.497 )
-thrust_strength = 0.0
+angular_damp = 4.0
+thrust_strength = 70.0
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( -0.272062, 0, 0.96228, 0, 1, 0, -0.96228, 0, -0.272062, 138.53, 42.4614, 83.0382 )
+[node name="Camera" type="Camera" parent="ShipEntity"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 2.22045e-16, 8.74228e-08, 0, -1, 0, 0, 1.70403 )
 far = 8192.0
+
+[node name="CSGBox" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30.774, 32.8272, 125.821 )

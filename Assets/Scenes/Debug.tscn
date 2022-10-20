@@ -24,13 +24,12 @@ visible = false
 mesh = SubResource( 2 )
 
 [node name="Enemy" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4221, 42.4143, -41.7797 )
-thrust_strength = 120.0
-
-[node name="ShipEntity" parent="." instance=ExtResource( 2 )]
-transform = Transform( 0.999509, -0.0313235, 0, 0.0313235, 0.999509, 0, 0, 0, 1, 30.774, 32.8272, 106.497 )
+transform = Transform( -0.21072, 0.913482, 0.348064, 0.473085, 0.40688, -0.781434, -0.855446, 0, -0.517893, 94.2256, 132.371, 175.821 )
 thrust_strength = 0.0
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( -0.272062, 0, 0.96228, 0, 1, 0, -0.96228, 0, -0.272062, 138.53, 42.4614, 83.0382 )
-far = 8192.0
+[node name="Camera" type="Camera" parent="Enemy"]
+transform = Transform( -0.99849, 0.0312916, 0.0451537, 0.0313235, 0.999509, 0, -0.0451315, 0.00141437, -0.99898, 0, 0, 2.93224 )
+
+[node name="ShipEntity" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.999509, -0.0313235, 0, 0.0313235, 0.999509, 0, 0, 0, 1, 163.303, 132.371, 354.02 )
+thrust_strength = 0.0

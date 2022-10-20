@@ -32,8 +32,8 @@ config/icon="res://Assets/Textures/icon.png"
 
 [display]
 
-window/size/width=1920
-window/size/height=1080
+window/size/width=256
+window/size/height=224
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 

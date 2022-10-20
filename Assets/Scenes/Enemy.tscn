@@ -48,28 +48,12 @@ shape = SubResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.030826, 0.832912 )
 shape = SubResource( 3 )
 
-[node name="XController" type="Node" parent="." index="10"]
+[node name="TorqueController" type="Node" parent="." index="10"]
 script = ExtResource( 4 )
-_Kp = 10.0
+_Kp = 40.0
 _Ki = 0.0
-_Kd = 0.0
+_Kd = 30.0
 
-[node name="IterationTimer" type="Timer" parent="XController" index="0"]
-
-[node name="YController" type="Node" parent="." index="11"]
-script = ExtResource( 4 )
-_Kp = 10.0
-_Ki = 0.0
-_Kd = 0.0
-
-[node name="IterationTimer" type="Timer" parent="YController" index="0"]
-
-[node name="ZController" type="Node" parent="." index="12"]
-script = ExtResource( 4 )
-_Kp = 10.0
-_Ki = 0.0
-_Kd = 0.0
-
-[node name="IterationTimer" type="Timer" parent="ZController" index="0"]
+[node name="IterationTimer" type="Timer" parent="TorqueController" index="0"]
 
 [editable path="EnemyModel"]

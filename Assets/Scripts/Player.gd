@@ -9,20 +9,18 @@ func _on_Hurtbox_area_entered(area):
 func _input(event):
 	if event is InputEventMouseMotion:
 		var movement = event.relative
-		add_yaw(-deg2rad(movement.x * 2.3))
-		add_pitch(deg2rad(movement.y * 2.3 ))
-		
-		#rotation.x += deg2rad(movement.y * .2 )
-		#rotation.x = clamp(rotation.x, deg2rad(-90), deg2rad(90))
-		#rotation.y += 
-		#rotation.y = clamp(rotation.y, deg2rad(-180), deg2rad(180))
+		add_yaw(-deg2rad(movement.x * turn_handling))
+		add_pitch(deg2rad(movement.y * turn_handling))
+
 	
 func _physics_process(delta):
+	if Input.is_action_just_pressed("boost"):
+		start_boost()
 	
 	if Input.is_action_pressed("roll_left"):
-		add_roll(-1)
+		add_roll(-turn_handling)
 	if Input.is_action_pressed("roll_right"):
-		add_roll(1)
+		add_roll(turn_handling)
 		
 	if Input.is_action_pressed("move_forward"):
 			set_main_thruster(1)
@@ -32,14 +30,14 @@ func _physics_process(delta):
 		set_main_thruster(0)
 		
 	if Input.is_action_pressed("ui_up"):
-		add_central_force(self.transform.basis.y)
+		add_central_force(self.transform.basis.y*move_handling)
 	elif Input.is_action_pressed("ui_down"):
-		add_central_force(-self.transform.basis.y)
+		add_central_force(-self.transform.basis.y*move_handling)
 		
 	if Input.is_action_pressed("ui_right"):
-		add_central_force(-self.transform.basis.x)
+		add_central_force(-self.transform.basis.x*move_handling)
 	elif Input.is_action_pressed("ui_left"):
-		add_central_force(self.transform.basis.x)
+		add_central_force(self.transform.basis.x*move_handling)
 
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()

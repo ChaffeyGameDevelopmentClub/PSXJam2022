@@ -20,3 +20,6 @@ shape = SubResource( 1 )
 
 [node name="CSGMesh" type="CSGMesh" parent="." index="7"]
 mesh = SubResource( 2 )
+
+[node name="Position3D" parent="." index="8"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58563e-07, 0, -1.81374 )

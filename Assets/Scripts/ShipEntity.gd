@@ -23,8 +23,10 @@ export (float) var ship_linear_damp = 2
 export (float) var ship_angular_damp = 2
 export (float) var boost_time = 0.5
 export (float) var boost_strength = 20
+export (float) var boost_cooldown_time = 4
 
 var boosting = false
+var boost_cooldown = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -59,9 +61,10 @@ func set_main_thruster(thrust_amount:float):
 	thrust_multiplier = thrust_amount
 
 func start_boost():
-	BoostTimer.wait_time = boost_time
-	BoostTimer.start()
-	boosting = true
+	if not boosting and not boost_cooldown:
+		BoostTimer.wait_time = boost_time
+		BoostTimer.start()
+		boosting = true
 	
 func add_pitch(amount):
 	add_torque(transform.basis.x*amount)
@@ -73,7 +76,13 @@ func add_roll(amount):
 	add_torque(transform.basis.z*amount)
 
 func _on_BoostTimer_timeout():
+	if boost_cooldown:
+		boost_cooldown = false
+		return
 	boosting = false
+	boost_cooldown = true
+	BoostTimer.wait_time = boost_cooldown_time
+	BoostTimer.start()
 	
 func _on_Hurtbox_area_entered(area):
 	pass

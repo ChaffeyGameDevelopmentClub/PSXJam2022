@@ -14,6 +14,9 @@ func _input(event):
 
 	
 func _physics_process(delta):
+	if Input.is_action_just_pressed("toggle_assist"):
+		flight_assist = !flight_assist
+	
 	if Input.is_action_just_pressed("boost"):
 		start_boost()
 	

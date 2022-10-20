@@ -1,9 +1,9 @@
+#https://godotengine.org/qa/92316/how-to-find-torque-to-rotate-object-towards-desired-rotation
 extends ShipEntity
 
 onready var player = get_tree().get_nodes_in_group("player")[0]
-onready var pitch_controller = $PitchController
-onready var yaw_controller = $YawController
-onready var roll_controller = $RollController
+onready var torque_controller = $TorqueController
+
 
 var state = SEEKING
 
@@ -26,9 +26,9 @@ func _on_Hurtbox_area_entered(area):
 	
 func _physics_process(delta):
 	var player_dist = self.translation.distance_to(player.translation)
-	if player_dist < 50:
+	if player_dist < 300:
 		state = FLEEING
-	elif (player_dist < 2000 and player_dist > 300 ):
+	elif (player_dist < 700 and player_dist > 300 ):
 		state = SEEKING
 
 	
@@ -40,33 +40,23 @@ func _physics_process(delta):
 			set_main_thruster(0)
 		SEEKING:
 			set_main_thruster(1)
-			var v1 = Vector2(self.translation.x, self.translation.z)
-			var v2 = Vector2(player.translation.x, player.translation.z)
-			var v3 = (v1 - v2).angle()
-			v3 += PI/2
-			
-			add_yaw(yaw_controller.calculate(-v3, rotation.y))
-			
-			v1 = Vector2(self.translation.y, self.translation.z)
-			v2 = Vector2(player.translation.y, player.translation.z)
-			v3 = (v1 - v2).angle()
-			v3 += PI/2
-			
-			add_pitch(pitch_controller.calculate(v3, rotation.x))
-			add_roll(roll_controller.calculate(0, self.rotation.z))
+			var new_transform = transform.looking_at(player.translation, Vector3.UP)
+			var rotating_vector = transform.basis.z.cross(new_transform.basis.z)
+			var angle = rotating_vector.angle_to(rotation)
+			var multiplier = torque_controller.calculate(0, -angle)
+			multiplier = 1
+
+			add_torque(-rotating_vector*multiplier*40)
+
 		FLEEING:
 			set_main_thruster(1)
-			var v1 = Vector2(self.translation.x, self.translation.z)
-			var v2 = Vector2(player.translation.x, player.translation.z)
-			var v3 = (v1 - v2).angle()
-			v3 += PI/2
-			
-			add_yaw(yaw_controller.calculate(v3, rotation.y))
-			
-			v1 = Vector2(self.translation.y, self.translation.z)
-			v2 = Vector2(player.translation.y, player.translation.z)
-			v3 = (v1 - v2).angle()
-			v3 += PI/2
-			
-			add_pitch(pitch_controller.calculate(-v3, rotation.x))
-			add_roll(roll_controller.calculate(0, self.rotation.z))
+			var new_transform = transform.looking_at(player.translation, Vector3.UP)
+			var rotating_vector = transform.basis.z.cross(new_transform.basis.z)
+			var angle = rotating_vector.angle_to(rotation)
+			print(angle)
+			var multiplier = torque_controller.calculate(0, angle)
+			multiplier = 1
+
+			add_torque(rotating_vector*multiplier*40)
+		
+

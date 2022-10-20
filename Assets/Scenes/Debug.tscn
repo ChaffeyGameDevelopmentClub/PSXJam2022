@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/Textures/Prototype/Orange/texture_01.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Textures/Prototype/Purple/texture_01.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Scenes/Enemy.tscn" type="PackedScene" id=4]
 
 [sub_resource type="SpatialMaterial" id=1]
@@ -11,6 +12,9 @@ uv1_triplanar = true
 [sub_resource type="PlaneMesh" id=2]
 material = SubResource( 1 )
 size = Vector2( 1000, 1000 )
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_texture = ExtResource( 3 )
 
 [node name="World" type="Spatial"]
 
@@ -27,10 +31,17 @@ mesh = SubResource( 2 )
 transform = Transform( 0.127421, 0.0975997, 0.987035, -0.0463837, 0.994645, -0.0923643, -0.990764, -0.0340133, 0.131265, 94.7562, 133.417, 175.822 )
 thrust_strength = 70.0
 
-[node name="ShipEntity" parent="." instance=ExtResource( 2 )]
+[node name="Player" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.999509, -0.0313235, 0, 0.0313235, 0.999509, 0, 0, 0, 1, 79.2774, 131.532, 174.658 )
-thrust_strength = 0.0
+thrust_strength = 120.0
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( -0.124301, 0.101543, -0.987035, 0.0775167, 0.992703, 0.0923642, 0.989212, -0.0650307, -0.131265, -413.162, 133.146, 176.207 )
-far = 800.0
+[node name="Camera" type="Camera" parent="Player"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 1.64659 )
+far = 8192.0
+
+[node name="CSGSphere" type="CSGSphere" parent="."]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, -992.918 )
+radius = 100.0
+material = SubResource( 3 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]

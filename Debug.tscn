@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Prototype/Orange/texture_01.png" type="Texture" id=1]
 [ext_resource path="res://ShipEntity.tscn" type="PackedScene" id=2]
 [ext_resource path="res://WeaponSystem/Skybox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://WeaponSystem/Enemy.tscn" type="PackedScene" id=4]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 1 )
@@ -25,5 +26,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43678, 0 )
 linear_damp = 0.0
 angular_damp = 0.0
 
-[node name="Camera" type="Camera" parent="ShipEntity"]
-transform = Transform( 0.851306, 0, 0.52467, 0, 1, 0, -0.52467, 0, 0.851306, 3.17086, 1.17497, 5.91234 )
+[node name="Camera2" type="Camera" parent="."]
+transform = Transform( -0.999587, 0, -0.0287246, 0, 1, 0, 0.0287246, 0, -0.999587, 0.17086, 3.61175, -2.08766 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.851306, 0, 0.52467, 0, 1, 0, -0.52467, 0, 0.851306, 3.17086, 2.61175, 5.91234 )
+
+[node name="Enemy" parent="." instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-09, 0, 0.5, 0, 0.7, 0, -0.1, 0, -2.18557e-08, 9, 6, 47 )

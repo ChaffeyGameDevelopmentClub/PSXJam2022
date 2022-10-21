@@ -19,6 +19,9 @@ albedo_texture = ExtResource( 3 )
 
 [node name="World" type="Spatial"]
 
+[node name="Enemy2" parent="." instance=ExtResource( 4 )]
+transform = Transform( -0.254842, 0.195198, -1.97407, 0.0927674, 1.98929, 0.184728, 1.98153, -0.0680266, -0.262531, 57.6653, 111.724, 191.654 )
+
 [node name="CSGMesh" type="CSGMesh" parent="."]
 visible = false
 invert_faces = true
@@ -29,19 +32,21 @@ visible = false
 mesh = SubResource( 2 )
 
 [node name="Enemy" parent="." instance=ExtResource( 4 )]
-transform = Transform( 0.127421, 0.0975997, 0.987035, -0.0463837, 0.994645, -0.0923643, -0.990764, -0.0340133, 0.131265, 94.7562, 133.417, 175.822 )
-thrust_strength = 70.0
+transform = Transform( 0.134782, 0.103238, 0.987035, -0.0490633, 1.05211, -0.0923641, -1.048, -0.0359782, 0.131265, 94.7562, 133.417, 175.822 )
+collision_layer = 9
+collision_mask = 9
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.999509, -0.0313235, 0, 0.0313235, 0.999509, 0, 0, 0, 1, 79.2774, 131.532, 174.644 )
 turn_handling = 4.0
 move_handling = 4.0
-thrust_strength = 120.0
+thrust_strength = 200.0
 boost_time = 2.0
 boost_strength = 200.0
 
 [node name="Camera" type="Camera" parent="Player"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 2.22045e-16, 8.74228e-08, 0, -1, 0, 0, 1.43709 )
+fov = 100.7
 far = 8192.0
 
 [node name="CSGSphere" type="CSGSphere" parent="."]
@@ -54,5 +59,5 @@ material = SubResource( 3 )
 [node name="Pixil-frame-01" type="Sprite" parent="."]
 modulate = Color( 0.196078, 1, 0, 1 )
 position = Vector2( 320, 240 )
-scale = Vector2( 0.25, 0.25 )
+scale = Vector2( 0.125, 0.125 )
 texture = ExtResource( 5 )

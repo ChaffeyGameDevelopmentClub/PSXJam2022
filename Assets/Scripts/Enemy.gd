@@ -53,7 +53,7 @@ func _physics_process(delta):
 			var new_transform = transform.looking_at(player.translation, Vector3.UP)
 			var rotating_vector = transform.basis.z.cross(new_transform.basis.z)
 			var angle = rotating_vector.angle_to(rotation)
-			print(angle)
+			#print(angle)
 			var multiplier = torque_controller.calculate(0, angle)
 			multiplier = 1
 

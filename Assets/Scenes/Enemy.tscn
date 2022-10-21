@@ -15,7 +15,7 @@ height = 2.95449
 [node name="Enemy" groups=["enemy"] instance=ExtResource( 1 )]
 transform = Transform( -1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, -1, 0, 0, 0 )
 script = ExtResource( 2 )
-thrust_strength = 1.0
+thrust_strength = 70.0
 
 [node name="EnemyModel" parent="." index="0" instance=ExtResource( 3 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.45, 0 )

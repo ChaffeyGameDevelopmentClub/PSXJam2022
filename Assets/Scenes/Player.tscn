@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Scenes/ShipEntity.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Scripts/Player.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Scripts/GunController.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Scenes/bullet.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CapsuleShape" id=1]
 
@@ -21,5 +23,13 @@ shape = SubResource( 1 )
 [node name="CSGMesh" type="CSGMesh" parent="." index="7"]
 mesh = SubResource( 2 )
 
-[node name="Position3D" parent="." index="8"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58563e-07, 0, -1.81374 )
+[node name="WeaponControls" type="Spatial" parent="." index="8"]
+script = ExtResource( 3 )
+Bullet = ExtResource( 4 )
+
+[node name="Spawn_location_Bullet" type="Position3D" parent="WeaponControls" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42109e-14, 0, 2.59651 )
+
+[node name="Timer" type="Timer" parent="WeaponControls" index="1"]
+
+[connection signal="timeout" from="WeaponControls/Timer" to="WeaponControls" method="_on_Timer_timeout"]

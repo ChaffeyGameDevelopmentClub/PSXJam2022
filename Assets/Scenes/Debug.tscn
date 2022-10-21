@@ -33,7 +33,7 @@ transform = Transform( 0.127421, 0.0975997, 0.987035, -0.0463837, 0.994645, -0.0
 thrust_strength = 70.0
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 0.999509, -0.0313235, 0, 0.0313235, 0.999509, 0, 0, 0, 1, 79.2774, 131.532, 174.658 )
+transform = Transform( 0.999509, -0.0313235, 0, 0.0313235, 0.999509, 0, 0, 0, 1, 79.2774, 131.532, 174.644 )
 turn_handling = 4.0
 move_handling = 4.0
 thrust_strength = 120.0
@@ -41,7 +41,7 @@ boost_time = 2.0
 boost_strength = 200.0
 
 [node name="Camera" type="Camera" parent="Player"]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 1.64659 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 2.22045e-16, 8.74228e-08, 0, -1, 0, 0, 1.43709 )
 far = 8192.0
 
 [node name="CSGSphere" type="CSGSphere" parent="."]

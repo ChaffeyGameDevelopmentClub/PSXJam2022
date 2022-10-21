@@ -1,5 +1,7 @@
 extends ShipEntity
 
+onready var WeaponControls = $WeaponControls
+
 func _on_Hurtbox_area_entered(area):
 	var projectile = area.get_parent()
 	if projectile.is_in_group("enemy"):
@@ -14,6 +16,14 @@ func _input(event):
 
 	
 func _physics_process(delta):
+	
+	#Shooting 
+	
+	
+	if Input.is_action_pressed("fire"):
+		WeaponControls._shoot()
+		
+	#movement
 	if Input.is_action_just_pressed("toggle_assist"):
 		flight_assist = !flight_assist
 	

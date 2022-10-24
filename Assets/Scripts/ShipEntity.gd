@@ -2,6 +2,9 @@ extends RigidBody
 
 class_name ShipEntity
 
+
+export(PackedScene) var Star
+
 onready var CenterOfMass = $CenterOfMass
 onready var Heading = $Heading
 onready var MainThruster = $MainThruster
@@ -49,11 +52,15 @@ func _physics_process(delta):
 		
 
 func take_damage(amount: float):
+	print("Took damage")
 	var temp = current_shield_integrity
 	current_shield_integrity -= amount
 	current_shield_integrity = clamp(current_shield_integrity, 0, shield_integrity)
+	print(current_shield_integrity, "sheild")
 	if current_shield_integrity <= 0:
 		current_hull_integrity -= (amount - temp)
+		Get_Destoryed()
+		print(current_hull_integrity, "Hull")
 
 #Takes a value from -1 to 1
 func set_main_thruster(thrust_amount:float):
@@ -85,6 +92,13 @@ func _on_BoostTimer_timeout():
 	BoostTimer.start()
 	
 func _on_Hurtbox_area_entered(area):
-	pass
+  pass
 
+func Get_Destoryed():
+	var Death_Particles = Star.instance()
+	Death_Particles.global_transform = CenterOfMass.global_transform
+	var scene_root = get_tree().get_root().get_children()[0]
+	scene_root.add_child(Death_Particles)
+	queue_free()
+	
 	

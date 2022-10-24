@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Assets/particles/star_06.png" type="Texture" id=1]
+[ext_resource path="res://Particles.gd" type="Script" id=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_line_width = 0.1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_color = Color( 0.729412, 0.431373, 0.431373, 1 )
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0, 0.16129, 0.997319, 1 )
+colors = PoolColorArray( 0.957031, 0.747681, 0.119629, 1, 0.964116, 0.432762, 0.0895029, 1, 0.972656, 0.0531921, 0.0531921, 1, 0.848062, 0.848062, 0.848062, 1 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=2]
+render_priority = 2
+trail_divisor = 5
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = 360.0
+angular_velocity_random = 1.0
+angle_random = 1.0
+scale = 16.0
+color = Color( 0.988235, 0.960784, 0.960784, 1 )
+color_ramp = SubResource( 5 )
+
+[sub_resource type="QuadMesh" id=3]
+
+[node name="Particle" type="Spatial"]
+
+[node name="Particles" type="Particles" parent="."]
+material_override = SubResource( 1 )
+generate_lightmap = false
+amount = 16
+lifetime = 0.2
+process_material = SubResource( 2 )
+draw_pass_1 = SubResource( 3 )
+script = ExtResource( 2 )

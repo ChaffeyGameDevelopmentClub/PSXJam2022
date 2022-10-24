@@ -7,7 +7,7 @@ onready var Reload_Timer = $Timer2
 var can_shoot = true
 var Is_Reloading = false
 var Bullets_shot = 0
-var Max_Bullet = 30
+var Max_Bullet = 50
 
 export(PackedScene) var Bullet
 export var muzzle_speed = 20
@@ -31,7 +31,7 @@ func _shoot():
 			var scene_root = get_tree().get_root().get_children()[0]
 			scene_root.add_child(New_bullet)
 			Bullets_shot +=1
-			print(Bullets_shot)
+			
 			if Bullets_shot >= Max_Bullet:
 				can_shoot = false
 				Reloading()

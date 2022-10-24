@@ -32,4 +32,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42109e-14, 0, 2.59651 )
 
 [node name="Timer" type="Timer" parent="WeaponControls" index="1"]
 
+[node name="Timer2" type="Timer" parent="WeaponControls" index="2"]
+one_shot = true
+
 [connection signal="timeout" from="WeaponControls/Timer" to="WeaponControls" method="_on_Timer_timeout"]
+[connection signal="timeout" from="WeaponControls/Timer2" to="WeaponControls" method="_on_Timer2_timeout"]

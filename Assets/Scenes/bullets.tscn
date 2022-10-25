@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Scripts/bullet.gd" type="Script" id=1]
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 0.3, 0.3, 2 )
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_unshaded = true
+albedo_color = Color( 0.0392157, 0.666667, 0.168627, 1 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 0.151127, 0.146628, 1.01795 )
+
+[node name="bullets" type="Spatial"]
+script = ExtResource( 1 )
+speed = 169
+
+[node name="bullet1" type="Spatial" parent="."]
+transform = Transform( 0.984808, -9.80636e-05, 0.173648, 8.72665e-05, 1, 6.98132e-05, -0.173648, -5.35989e-05, 0.984808, -1, 0, 0 )
+
+[node name="MeshInstance1" type="MeshInstance" parent="bullet1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.559377, 0.0163337, 0.00686794 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 2 )
+
+[node name="1" type="Area" parent="bullet1"]
+transform = Transform( -4.80825e-08, 0, -1.1, 0, 1.1, 0, 1.1, 0, -4.80825e-08, -0.564244, 0, -0.58211 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape" type="CollisionShape" parent="bullet1/1"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.572619, 0.0245574, -0.0143478 )
+shape = SubResource( 3 )
+
+[node name="bullet2" type="Spatial" parent="."]
+transform = Transform( -0.173648, 0, -0.984808, 0, 1, 0, 0.984808, 0, -0.173648, 1.01463, 2.38419e-07, -0.582741 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="bullet2"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.588978, 0.0163337, -0.020145 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 2 )
+
+[node name="2" type="Area" parent="bullet2"]
+transform = Transform( 1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, -0.0121205, -0.00562668, 0.0363173 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape" type="CollisionShape" parent="bullet2/2"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.572619, 0.0245574, -0.0143478 )
+shape = SubResource( 3 )
+
+[connection signal="body_entered" from="bullet1/1" to="." method="_on_1_body_entered"]
+[connection signal="body_entered" from="bullet2/2" to="." method="_on_2_body_entered"]

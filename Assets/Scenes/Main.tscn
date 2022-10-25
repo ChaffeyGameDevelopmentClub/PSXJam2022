@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/PostProcessing/pp_dither.tres" type="Material" id=1]
+[ext_resource path="res://Assets/Scenes/Debug.tscn" type="PackedScene" id=2]
+
+[node name="Main" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ViewportContainer" type="ViewportContainer" parent="CanvasLayer"]
+material = ExtResource( 1 )
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Dithering" type="Viewport" parent="CanvasLayer/ViewportContainer"]
+size = Vector2( 320, 224 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="World" parent="CanvasLayer/ViewportContainer/Dithering" instance=ExtResource( 2 )]

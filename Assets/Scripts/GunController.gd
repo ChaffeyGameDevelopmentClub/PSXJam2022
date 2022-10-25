@@ -8,6 +8,7 @@ var can_shoot = true
 var Is_Reloading = false
 var Bullets_shot = 0
 var Max_Bullet = 50
+var current_group = ""
 
 export(PackedScene) var Bullet
 export var muzzle_speed = 20
@@ -26,7 +27,10 @@ func _shoot():
 	if !Is_Reloading:
 		if can_shoot:
 			var New_bullet = Bullet.instance()
-			New_bullet.global_transform =$Spawn_location_Bullet.global_transform
+			New_bullet.add_to_group("player_projectile")
+			New_bullet.entity_speed = (get_parent().linear_velocity.length())
+		
+			New_bullet.global_transform = $Spawn_location_Bullet.global_transform
 			#New_bullet.speed = muzzle_speed
 			var scene_root = get_tree().get_root().get_children()[0]
 			scene_root.add_child(New_bullet)
@@ -39,8 +43,6 @@ func _shoot():
 				can_shoot = false
 				RateOfFire_timer.start()
 			
-	
-
 
 func _on_Timer_timeout(): #Rate of fire timer
 	can_shoot = true

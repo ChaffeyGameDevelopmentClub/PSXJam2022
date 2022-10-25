@@ -8,6 +8,8 @@ onready var warning_timer = $WarningTimer
 onready var warning = $PlayerInterface/Warning
 onready var camera = $Camera
 onready var target = $PlayerInterface/Target
+onready var health_bar = $PlayerInterface/Health
+onready var shield_bar = $PlayerInterface/Shield
 var current_enemy_index = 0
 
 func _on_Hurtbox_area_entered(area):
@@ -35,18 +37,21 @@ func stop_warning():
 	warning.visible = false
 
 func _physics_process(delta):
-		
+	health_bar.value = current_hull_integrity
+	shield_bar.value = current_shield_integrity
 	var enemies =  get_tree().get_nodes_in_group("enemy")
 	
 	if Input.is_action_just_pressed("cycle_target"):
 		current_enemy_index += 1
 		if current_enemy_index >= len(enemies):
 			current_enemy_index = 0
-	
-	var enemy_pos = enemies[current_enemy_index].translation
-	if !camera.is_position_behind(enemies[current_enemy_index].translation):
-		target.visible = true
-		target.rect_position = camera.unproject_position(enemy_pos)
+	if len(enemies) > 0:
+		var enemy_pos = enemies[current_enemy_index].translation
+		if !camera.is_position_behind(enemies[current_enemy_index].translation):
+			target.visible = true
+			target.rect_position = camera.unproject_position(enemy_pos)
+		else:
+			target.visible = false
 	else:
 		target.visible = false
 	
@@ -92,4 +97,5 @@ func _physics_process(delta):
 	
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	WeaponControls.current_group = "player"
 

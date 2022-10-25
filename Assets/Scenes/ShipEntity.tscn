@@ -43,7 +43,7 @@ debug_shape_thickness = 4
 [node name="CenterOfMass" type="Position3D" parent="."]
 
 [node name="ShieldTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 5.0
 
 [node name="BoostTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -51,9 +51,13 @@ wait_time = 0.5
 [node name="Hurtbox" type="Area" parent="."]
 
 [node name="Shield" type="CSGSphere" parent="."]
+visible = false
 radius = 10.0
 material = SubResource( 1 )
+
+[node name="ShieldVisTimer" type="Timer" parent="."]
 
 [connection signal="timeout" from="ShieldTimer" to="." method="_on_ShieldTimer_timeout"]
 [connection signal="timeout" from="BoostTimer" to="." method="_on_BoostTimer_timeout"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+[connection signal="timeout" from="ShieldVisTimer" to="." method="_on_ShieldVisTimer_timeout"]

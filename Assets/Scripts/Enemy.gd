@@ -17,24 +17,19 @@ func _ready():
 	set_main_thruster(0)
 
 func _on_Hurtbox_area_entered(area):
+	return
 	var projectile = area.get_parent()
-	if projectile.is_in_group("player"):
-		#take_damage(projectile.damage) 
-		pass
+	if projectile.is_in_group("player_projectile"):
+		take_damage(projectile.damage) 
 
 
-	
 func _physics_process(delta):
-	var player_dist = self.translation.distance_to(player.translation)
-	if player_dist < 300:
-		#state = FLEEING
-		pass
-	elif (player_dist < 700 and player_dist > 300 ):
-		state = SEEKING
-
 	
-	#if self.translation.distance_to(player.translation) >= 1000:
-		#state = IDLE
+	var player_dist = self.translation.distance_to(player.translation)
+	if player_dist < 50:
+		state = FLEEING
+	elif (player_dist < 1000 and player_dist > 50 ):
+		state = SEEKING
 
 	match state:
 		IDLE:
@@ -42,22 +37,20 @@ func _physics_process(delta):
 		SEEKING:
 			set_main_thruster(1)
 			var new_transform = transform.looking_at(player.translation, Vector3.UP)
-			var rotating_vector = transform.basis.z.cross(new_transform.basis.z)
+			var rotating_vector = transform.basis.z.cross(new_transform.basis.z*turn_handling)
 			var angle = rotating_vector.angle_to(rotation)
-			var multiplier = torque_controller.calculate(0, -angle)
-			multiplier = 1
+			#var multiplier = torque_controller.calculate(0, -angle)
+			#multiplier = 1
 
-			add_torque(-rotating_vector*multiplier*40)
+			add_torque(-rotating_vector*40)
 
 		FLEEING:
 			set_main_thruster(1)
 			var new_transform = transform.looking_at(player.translation, Vector3.UP)
-			var rotating_vector = transform.basis.z.cross(new_transform.basis.z)
+			var rotating_vector = transform.basis.z.cross(new_transform.basis.z*turn_handling)
 			var angle = rotating_vector.angle_to(rotation)
 			#print(angle)
-			var multiplier = torque_controller.calculate(0, angle)
-			multiplier = 1
+			#var multiplier = torque_controller.calculate(0, angle)
+			#multiplier = 1
 
-			add_torque(rotating_vector*multiplier*40)
-		
-
+			add_torque(rotating_vector*40)

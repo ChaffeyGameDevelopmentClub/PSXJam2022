@@ -30,14 +30,17 @@ export (float) var boost_cooldown_time = 4
 
 var boosting = false
 var boost_cooldown = false
+var shield_regen = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	current_hull_integrity = hull_integrity
 	current_shield_integrity = shield_integrity
-	ShieldTimer.wait_time = 0.5
 
 func _physics_process(delta):
+	if shield_regen:
+		current_shield_integrity += 10*delta
+		
 	if (flight_assist):
 		linear_damp = ship_linear_damp
 		angular_damp = ship_angular_damp
@@ -56,11 +59,17 @@ func take_damage(amount: float):
 	var temp = current_shield_integrity
 	current_shield_integrity -= amount
 	current_shield_integrity = clamp(current_shield_integrity, 0, shield_integrity)
-	print(current_shield_integrity, "sheild")
+	shield_regen = false
+	ShieldTimer.start()
+	if (current_shield_integrity > 0):
+		$Shield.visible = true
+		$ShieldVisTimer.start(0)
+	print(current_shield_integrity, " shield ")
 	if current_shield_integrity <= 0:
 		current_hull_integrity -= (amount - temp)
-		Get_Destoryed()
-		print(current_hull_integrity, "Hull")
+		print(current_hull_integrity, " hull ")
+	if current_hull_integrity <= 0:
+		Get_Destroyed()
 
 #Takes a value from -1 to 1
 func set_main_thruster(thrust_amount:float):
@@ -94,11 +103,16 @@ func _on_BoostTimer_timeout():
 func _on_Hurtbox_area_entered(area):
   pass
 
-func Get_Destoryed():
-	var Death_Particles = Star.instance()
-	Death_Particles.global_transform = CenterOfMass.global_transform
-	var scene_root = get_tree().get_root().get_children()[0]
-	scene_root.add_child(Death_Particles)
+func Get_Destroyed():
+	#var Death_Particles = Star.instance()
+	#Death_Particles.global_transform = CenterOfMass.global_transform
+	#var scene_root = get_tree().get_root().get_children()[0]
+	#scene_root.add_child(Death_Particles)
 	queue_free()
-	
-	
+
+func _on_ShieldVisTimer_timeout():
+	$Shield.visible = false
+
+
+func _on_ShieldTimer_timeout():
+	shield_regen = true

@@ -1,19 +1,24 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/Scenes/CatEnemy1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Scenes/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/Textures/bullet.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Scenes/CatPlanet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Textures/Prototype/Dark/texture_01.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Scenes/enemy_bullets.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Scenes/BirdBot.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/Scripts/Battle.gd" type="Script" id=10]
 
-[sub_resource type="SpatialMaterial" id=3]
-albedo_texture = ExtResource( 3 )
+[sub_resource type="SpatialMaterial" id=1]
+albedo_texture = ExtResource( 4 )
 
 [node name="World" type="Spatial"]
 script = ExtResource( 10 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 0.999509, -0.0313235, 0, 0.0313235, 0.999509, 0, 0, 0, 1, 79.2774, 131.532, 174.644 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74227e-08, 0, -1, 0, 0, 0 )
 angular_damp = 0.0
+hull_integrity = 100.0
+shield_integrity = 70.0
 turn_handling = 100.0
 move_handling = 4.0
 thrust_strength = 200.0
@@ -23,12 +28,7 @@ boost_strength = 200.0
 [node name="Camera" type="Camera" parent="Player"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 2.22045e-16, 8.74228e-08, 0, -1, 0, 0, 1.43709 )
 fov = 100.7
-far = 8192.0
-
-[node name="CSGSphere" type="CSGSphere" parent="."]
-transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, -992.918 )
-radius = 13.275
-material = SubResource( 3 )
+far = 10000.0
 
 [node name="Blindfold" type="ColorRect" parent="."]
 margin_left = -15.0
@@ -37,8 +37,32 @@ margin_right = 369.0
 margin_bottom = 297.0
 color = Color( 0.933333, 0, 1, 1 )
 
-[node name="Enemy" parent="." instance=ExtResource( 1 )]
-transform = Transform( -1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, -1, -29.566, -8.87171, -38.7781 )
+[node name="CatPlanet" parent="." instance=ExtResource( 3 )]
+transform = Transform( 10000, 0, 0, 0, 10000, 0, 0, 0, 10000, 0, 0, -7597.01 )
 
-[node name="Enemy2" parent="." instance=ExtResource( 1 )]
-transform = Transform( -1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, -1, -602.861, -8.87171, -38.778 )
+[node name="room" type="CSGBox" parent="."]
+visible = false
+generate_lightmap = false
+use_collision = true
+invert_faces = true
+width = 10000.0
+height = 10000.0
+depth = 10000.0
+material = SubResource( 1 )
+
+[node name="Enemy" parent="." instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.00113863, 0, -56.2162 )
+hull_integrity = 100.0
+shield_integrity = 70.0
+turn_handling = 2.0
+thrust_strength = 0.0
+
+[node name="Enemy2" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 2.70205e-07, 0, 1, 0, -2.70205e-07, 0, 1, 25.2331, 0, -56.2162 )
+hull_integrity = 100.0
+shield_integrity = 70.0
+thrust_strength = 0.0
+
+[node name="bullets" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.5158 )
+speed = 0

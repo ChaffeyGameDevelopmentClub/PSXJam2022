@@ -1,18 +1,18 @@
 extends Spatial
 
-export var speed = 300
+export var speed = 2000
 var KILL_TIME = 3
 var timer = 0
-var Damage = 1
+var Damage = 10
+var entity_speed := 0.0
+	
 func _physics_process(delta):
 	var forward_direction = global_transform.basis.z.normalized()
-	global_translate(forward_direction * speed * delta)
+	global_translate(forward_direction * (speed + entity_speed) * delta)
 	
 	timer += delta
 	if timer >= KILL_TIME:
 		queue_free()
-
-
 
 func _on_1_body_entered(body:Node):#bullet's code
 	print("hit 1")
@@ -20,7 +20,6 @@ func _on_1_body_entered(body:Node):#bullet's code
 	var Ship_Stats = body as ShipEntity
 	Ship_Stats.take_damage(Damage)
 	$bullet1.queue_free()
-
 
 func _on_2_body_entered(body:Node):#bullet2's code
 	print("hit 2 ")

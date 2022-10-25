@@ -29,6 +29,8 @@ material/0 = SubResource( 2 )
 
 [node name="1" type="Area" parent="bullet1"]
 transform = Transform( -4.80825e-08, 0, -1.1, 0, 1.1, 0, 1.1, 0, -4.80825e-08, -0.564244, 0, -0.58211 )
+collision_layer = 8
+collision_mask = 8
 
 [node name="CollisionShape" type="CollisionShape" parent="bullet1/1"]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.572619, 0.0245574, -0.0143478 )
@@ -50,6 +52,8 @@ material/0 = SubResource( 2 )
 
 [node name="2" type="Area" parent="bullet2"]
 transform = Transform( 1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, -0.0121205, -0.00562668, 0.0363173 )
+collision_layer = 8
+collision_mask = 8
 
 [node name="CollisionShape" type="CollisionShape" parent="bullet2/2"]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.572619, 0.0245574, -0.0143478 )

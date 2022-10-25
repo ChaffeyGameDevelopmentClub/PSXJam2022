@@ -4,7 +4,9 @@ extends Area
 
 var shoot = false
 var damage = 2
-var speed = 20
+var speed = 200
+var target = null
+
 
 func _ready():
 	set_as_toplevel(true)
@@ -12,10 +14,10 @@ func _ready():
 	$LunchSound.play()
 	
 func _physics_process(delta):
-	#if shoot && is_instance_valid(target):
 	if shoot:
-		#look_at(target.global_transform.origin, -Vector3.FORWARD)
-		var forward_direction = global_transform.basis.z.normalized()
+		if is_instance_valid(target) and target.visible:
+			look_at(target.global_transform.origin, -Vector3.FORWARD)
+		var forward_direction = -global_transform.basis.z.normalized()
 		global_translate(forward_direction * speed * delta)
 
 func _on_Missile_body_entered(body):

@@ -1,7 +1,6 @@
 extends ShipEntity
 
 onready var WeaponControls = $WeaponControls
-onready var Spawn_location_Missile = $WeaponControls/Spawn_location_Missile
 onready var thrust_bar = $PlayerInterface/ThrustBar
 onready var shield = $Shield
 var current_thrust_setting: float = 0
@@ -44,20 +43,24 @@ func _physics_process(delta):
 		if current_enemy_index >= len(enemies):
 			current_enemy_index = 0
 	
-	var enemy_pos = enemies[current_enemy_index].translation
-	if !camera.is_position_behind(enemies[current_enemy_index].translation):
-		target.visible = true
-		target.rect_position = camera.unproject_position(enemy_pos)
+	if enemies:
+		var enemy_pos = enemies[current_enemy_index].translation
+		if !camera.is_position_behind(enemies[current_enemy_index].translation):
+			target.visible = true
+			target.rect_position = camera.unproject_position(enemy_pos)
 	else:
 		target.visible = false
 	
 	#Shooting 
 	if Input.is_action_pressed("fire"):
 		WeaponControls._shoot()
+		
 	
 	if Input.is_action_pressed("secondary_fire"):
-		$WeaponControls/Spawn_location_Missile._secondary_shoot()
-		
+		if enemies:
+			var enemy = enemies[current_enemy_index]
+			WeaponControls.get_node("HomingWeapon")._secondary_shoot(enemy)
+
 	#movement
 	if Input.is_action_just_pressed("toggle_assist"):
 		flight_assist = !flight_assist

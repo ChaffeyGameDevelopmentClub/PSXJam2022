@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/Jet.wav-c8bb7a6250639dd9235d6b4e5b94161f.sample"
+path="res://.import/Jet.wav-0492eba78ecae67776fd06b594a35dd5.sample"
 
 [deps]
 
-source_file="res://WeaponSystem/Assets/Sound/Jet.wav"
-dest_files=[ "res://.import/Jet.wav-c8bb7a6250639dd9235d6b4e5b94161f.sample" ]
+source_file="res://Assets/Sounds/Jet.wav"
+dest_files=[ "res://.import/Jet.wav-0492eba78ecae67776fd06b594a35dd5.sample" ]
 
 [params]
 

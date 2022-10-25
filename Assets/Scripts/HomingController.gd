@@ -1,8 +1,8 @@
 extends Spatial
 
-onready var RateOfFire_timer = $Timer3
-onready var Reload_Timer = $Timer4
-onready var Homing_Missile = preload("res://WeaponSystem/Missile/HomingMissile.tscn")
+onready var RateOfFire_timer = $Timer
+onready var Reload_Timer = $Timer2
+onready var Homing_Missile = preload("res://Assets/Scenes/HomingMissile.tscn")
 var can_shoot = true
 var Is_Reloading = false
 var Missiles_shot = 0
@@ -21,11 +21,12 @@ func _ready():
 func _process(delta):
 	pass
 	
-func _secondary_shoot():
+func _secondary_shoot(enemy):
 	if !Is_Reloading:
 		if can_shoot:
 			var New_Homing_Missile = Homing_Missile.instance()
 			New_Homing_Missile.transform = transform
+			New_Homing_Missile.target = enemy
 			New_Homing_Missile.shoot = true
 			add_child(New_Homing_Missile)
 			Missiles_shot +=1

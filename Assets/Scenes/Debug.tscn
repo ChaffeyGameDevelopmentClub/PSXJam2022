@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/Textures/Prototype/Orange/texture_01.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Textures/Prototype/Purple/texture_01.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Scenes/Enemy.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Textures/pixil-frame-0_1.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Scenes/Particle_On_Death.tscn" type="PackedScene" id=6]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 1 )
@@ -24,7 +23,6 @@ albedo_texture = ExtResource( 3 )
 transform = Transform( -0.254842, 0.195198, -1.97407, 0.0927674, 1.98929, 0.184728, 1.98153, -0.0680266, -0.262531, 57.6653, 111.724, 191.654 )
 collision_layer = 9
 collision_mask = 9
-Star = ExtResource( 6 )
 hull_integrity = 6.0
 shield_integrity = 12.0
 
@@ -41,7 +39,6 @@ mesh = SubResource( 2 )
 transform = Transform( 0.134782, 0.103238, 0.987035, -0.0490633, 1.05211, -0.0923641, -1.048, -0.0359782, 0.131265, 93.8152, 133.76, 183.139 )
 collision_layer = 9
 collision_mask = 9
-Star = ExtResource( 6 )
 hull_integrity = 6.0
 shield_integrity = 12.0
 thrust_strength = 0.0
@@ -76,7 +73,6 @@ texture = ExtResource( 5 )
 transform = Transform( -1.02131, -0.295481, 0.00581084, 0.0385646, -0.125671, 1.04941, -0.277052, 1.07175, 0.124653, 56.5309, 129.561, 167.058 )
 collision_layer = 9
 collision_mask = 9
-Star = ExtResource( 6 )
 hull_integrity = 6.0
 shield_integrity = 12.0
 thrust_strength = 0.0
@@ -85,7 +81,6 @@ thrust_strength = 0.0
 transform = Transform( 0.134782, 0.103238, 0.987035, -0.0490633, 1.05211, -0.0923641, -1.048, -0.0359782, 0.131265, 86.1056, 133.652, 157.886 )
 collision_layer = 9
 collision_mask = 9
-Star = ExtResource( 6 )
 hull_integrity = 6.0
 shield_integrity = 12.0
 thrust_strength = 0.0

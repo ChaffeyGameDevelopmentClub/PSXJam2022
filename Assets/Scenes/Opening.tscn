@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Assets/Shaders/tunnel_speed_lines.tres" type="Material" id=1]
 [ext_resource path="res://Assets/particles/star_07.png" type="Texture" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Assets/Textures/health.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Textures/healthbase.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Textures/warning.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Textures/speed.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Textures/heat.png" type="Texture" id=11]
 
 [sub_resource type="SpatialMaterial" id=5]
 flags_unshaded = true
@@ -363,5 +365,23 @@ margin_right = 199.0
 margin_bottom = 235.0
 rect_scale = Vector2( 2, 2 )
 texture = ExtResource( 9 )
+
+[node name="TextureProgress" type="TextureProgress" parent="PlayerInterface"]
+margin_left = 281.0
+margin_top = 121.0
+margin_right = 297.0
+margin_bottom = 161.0
+rect_scale = Vector2( 2, 2 )
+value = 100.0
+texture_over = ExtResource( 10 )
+texture_progress = ExtResource( 11 )
+fill_mode = 3
+
+[node name="Blindfold" type="ColorRect" parent="."]
+margin_left = -11.0
+margin_top = -7.0
+margin_right = 366.0
+margin_bottom = 284.0
+color = Color( 0.933333, 0, 1, 1 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

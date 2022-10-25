@@ -1,6 +1,9 @@
 extends ShipEntity
 
 onready var WeaponControls = $WeaponControls
+onready var thrust_bar = $PlayerInterface/ThrustBar
+
+var current_thrust_setting: float = 0
 
 func _on_Hurtbox_area_entered(area):
 	var projectile = area.get_parent()
@@ -16,6 +19,8 @@ func _input(event):
 
 	
 func _physics_process(delta):
+	$Shield.visible = true
+	$Shield.invert_faces = true
 	
 	#Shooting 
 	
@@ -31,16 +36,20 @@ func _physics_process(delta):
 		start_boost()
 	
 	if Input.is_action_pressed("roll_left"):
-		add_roll(-turn_handling)
+		add_roll(-turn_handling*delta)
 	if Input.is_action_pressed("roll_right"):
-		add_roll(turn_handling)
+		add_roll(turn_handling*delta)
 		
 	if Input.is_action_pressed("move_forward"):
-			set_main_thruster(1)
+		current_thrust_setting += 1
 	elif Input.is_action_pressed("move_backward"):
-		set_main_thruster(-0.5)
-	else:
-		set_main_thruster(0)
+		current_thrust_setting -= 1
+		add_central_force(-self.transform.basis.z*move_handling)
+	
+	current_thrust_setting = clamp(current_thrust_setting, 0, 100)
+	set_main_thruster(current_thrust_setting/100.0)
+	thrust_bar.value = current_thrust_setting
+	
 		
 	if Input.is_action_pressed("ui_up"):
 		add_central_force(self.transform.basis.y*move_handling)

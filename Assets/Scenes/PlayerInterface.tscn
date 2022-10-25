@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/Fonts/nasal.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/Textures/health.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Textures/healthbase.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Textures/shield.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Textures/bullet.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Textures/speed.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Textures/heat.png" type="Texture" id=7]
 
 [node name="PlayerInterface" type="Control"]
 anchor_right = 1.0
@@ -116,3 +118,14 @@ margin_top = -19.0
 margin_right = 1.0
 margin_bottom = -8.0
 color = Color( 0.933333, 0, 1, 1 )
+
+[node name="ThrustBar" type="TextureProgress" parent="."]
+margin_left = 281.0
+margin_top = 121.0
+margin_right = 297.0
+margin_bottom = 161.0
+rect_scale = Vector2( 2, 2 )
+value = 100.0
+texture_over = ExtResource( 6 )
+texture_progress = ExtResource( 7 )
+fill_mode = 3

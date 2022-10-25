@@ -188,6 +188,15 @@ mouse_filter = 1
 custom_fonts/font = ExtResource( 3 )
 text = "Quit"
 
+[node name="Blindfold" type="ColorRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -21.0
+margin_top = -12.0
+margin_right = 354.0
+margin_bottom = 280.0
+mouse_filter = 2
+color = Color( 0.933333, 0, 1, 1 )
+
 [connection signal="mouse_entered" from="Control2/Start_Button" to="." method="_on_Start_Button_mouse_entered"]
 [connection signal="mouse_exited" from="Control2/Start_Button" to="." method="_on_Start_Button_mouse_exited"]
 [connection signal="pressed" from="Control2/Start_Button" to="." method="_on_Start_Button_pressed"]

@@ -19,6 +19,9 @@ thrust_strength = 200.0
 boost_time = 2.0
 boost_strength = 200.0
 
+[node name="Shield" parent="Player" index="10"]
+smooth_faces = false
+
 [node name="Camera" type="Camera" parent="Player"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 2.22045e-16, 8.74228e-08, 0, -1, 0, 0, 1.43709 )
 fov = 100.7

@@ -8,6 +8,7 @@ onready var anomaly = $PlayerInterface/Anomaly
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	fade_in()
 	yield(get_tree().create_timer(6), "timeout")
 	anomaly.visible = true

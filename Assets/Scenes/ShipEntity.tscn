@@ -5,12 +5,12 @@
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
-shader_param/scale = 15.0
+shader_param/scale = 10.0
 shader_param/line_speed = 0.5
-shader_param/ripple_speed = 1.564
+shader_param/ripple_speed = 0.5
 shader_param/line_color = Color( 0.933333, 0, 1, 1 )
-shader_param/ripple_color = Color( 0.933333, 0, 1, 1 )
-shader_param/surface_color = Color( 0.933333, 0, 1, 0.498039 )
+shader_param/ripple_color = Color( 0.933333, 0, 1, 0.00392157 )
+shader_param/surface_color = Color( 0.933333, 0, 1, 0 )
 shader_param/sphere_size = 10.0
 shader_param/pos1 = Vector3( 0, 0, 0 )
 shader_param/pos2 = Vector3( 10000, 10000, 10000 )
@@ -51,7 +51,6 @@ wait_time = 0.5
 [node name="Hurtbox" type="Area" parent="."]
 
 [node name="Shield" type="CSGSphere" parent="."]
-visible = false
 radius = 10.0
 material = SubResource( 1 )
 

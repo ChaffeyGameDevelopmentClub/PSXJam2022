@@ -80,5 +80,5 @@ void fragment( )
 	)))));
 
 	ALBEDO = final.rgb;
-	ALPHA = clamp( final.a * sphere_size - min_dist, 0.0, 1.0 );
+	ALPHA = clamp( final.a * sphere_size , 0.0, 1.0 );
 }"

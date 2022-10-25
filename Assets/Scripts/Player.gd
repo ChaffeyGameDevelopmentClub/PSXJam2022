@@ -2,7 +2,7 @@ extends ShipEntity
 
 onready var WeaponControls = $WeaponControls
 onready var thrust_bar = $PlayerInterface/ThrustBar
-
+onready var shield = $Shield
 var current_thrust_setting: float = 0
 
 func _on_Hurtbox_area_entered(area):
@@ -19,8 +19,8 @@ func _input(event):
 
 	
 func _physics_process(delta):
-	$Shield.visible = true
-	$Shield.invert_faces = true
+
+	
 	
 	#Shooting 
 	
@@ -63,6 +63,7 @@ func _physics_process(delta):
 
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
+	
 func _ready():
-
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+

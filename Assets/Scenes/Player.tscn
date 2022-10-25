@@ -38,7 +38,7 @@ one_shot = true
 [node name="PlayerInterface" parent="." index="9" instance=ExtResource( 5 )]
 
 [node name="Shield" parent="." index="10"]
-visible = true
+visible = false
 invert_faces = true
 
 [connection signal="timeout" from="WeaponControls/Timer" to="WeaponControls" method="_on_Timer_timeout"]

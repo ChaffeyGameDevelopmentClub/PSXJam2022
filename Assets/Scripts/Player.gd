@@ -1,6 +1,7 @@
 extends ShipEntity
 
 onready var WeaponControls = $WeaponControls
+onready var Spawn_location_Missile = $WeaponControls/Spawn_location_Missile
 
 func _on_Hurtbox_area_entered(area):
 	var projectile = area.get_parent()
@@ -22,6 +23,9 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed("fire"):
 		WeaponControls._shoot()
+	
+	if Input.is_action_pressed("secondary_fire"):
+		$WeaponControls/Spawn_location_Missile._secondary_shoot()
 		
 	#movement
 	if Input.is_action_just_pressed("toggle_assist"):

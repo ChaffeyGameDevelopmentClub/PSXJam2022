@@ -26,9 +26,10 @@ _global_script_class_icons={
 
 [application]
 
-config/name="PSXJam2022"
+config/name="SpaceCat KnifeParty"
 run/main_scene="res://Assets/Scenes/Debug.tscn"
-config/icon="res://Assets/Textures/icon.png"
+boot_splash/image="res://Assets/Textures/boot.png"
+config/icon="res://Assets/Textures/boot.png"
 
 [display]
 

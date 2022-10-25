@@ -4,6 +4,8 @@ onready var WeaponControls = $WeaponControls
 onready var thrust_bar = $PlayerInterface/ThrustBar
 onready var shield = $Shield
 var current_thrust_setting: float = 0
+onready var warning_timer = $WarningTimer
+onready var warning = $PlayerInterface/Warning
 
 func _on_Hurtbox_area_entered(area):
 	var projectile = area.get_parent()
@@ -17,14 +19,20 @@ func _input(event):
 		add_yaw(-deg2rad(movement.x * turn_handling))
 		add_pitch(deg2rad(movement.y * turn_handling))
 
+func _on_Timer_timeout():
+	warning_timer.start()
+	warning.visible = !warning.visible
 	
-func _physics_process(delta):
+#When a missile is locked
+func start_warning():
+	warning_timer.start()
 
-	
-	
+func stop_warning():
+	warning_timer.stop()
+	warning.visible = false
+
+func _physics_process(delta):
 	#Shooting 
-	
-	
 	if Input.is_action_pressed("fire"):
 		WeaponControls._shoot()
 		

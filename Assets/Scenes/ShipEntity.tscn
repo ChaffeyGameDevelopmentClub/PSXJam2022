@@ -19,7 +19,7 @@ shader_param/pos4 = Vector3( 10000, 10000, 10000 )
 shader_param/pos5 = Vector3( 10000, 10000, 10000 )
 shader_param/pos6 = Vector3( 10000, 10000, 10000 )
 
-[node name="ShipEntity" type="RigidBody"]
+[node name="ShipEntity2" type="RigidBody"]
 gravity_scale = 0.0
 linear_damp = 2.0
 angular_damp = 2.0

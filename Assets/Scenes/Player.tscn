@@ -41,5 +41,9 @@ one_shot = true
 visible = false
 invert_faces = true
 
+[node name="WarningTimer" type="Timer" parent="." index="11"]
+wait_time = 0.25
+
 [connection signal="timeout" from="WeaponControls/Timer" to="WeaponControls" method="_on_Timer_timeout"]
 [connection signal="timeout" from="WeaponControls/Timer2" to="WeaponControls" method="_on_Timer2_timeout"]
+[connection signal="timeout" from="WarningTimer" to="." method="_on_Timer_timeout"]

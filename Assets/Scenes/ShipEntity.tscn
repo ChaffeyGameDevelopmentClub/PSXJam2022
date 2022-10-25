@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Assets/Scripts/ShipEntity.gd" type="Script" id=1]
+[ext_resource path="res://healthBars.tscn" type="PackedScene" id=2]
 
 [node name="ShipEntity" type="RigidBody"]
 gravity_scale = 0.0
@@ -33,6 +34,9 @@ wait_time = 0.5
 wait_time = 0.5
 
 [node name="Hurtbox" type="Area" parent="."]
+
+[node name="healthBars" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56755, 0 )
 
 [connection signal="timeout" from="ShieldTimer" to="." method="_on_ShieldTimer_timeout"]
 [connection signal="timeout" from="BoostTimer" to="." method="_on_BoostTimer_timeout"]

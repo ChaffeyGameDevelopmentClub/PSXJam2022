@@ -56,4 +56,7 @@ _Kd = 30.0
 
 [node name="IterationTimer" type="Timer" parent="TorqueController" index="0"]
 
+[node name="healthBars" parent="." index="11"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.54473, 0 )
+
 [editable path="EnemyModel"]

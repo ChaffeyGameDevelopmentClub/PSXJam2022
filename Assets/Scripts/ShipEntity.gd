@@ -5,6 +5,9 @@ class_name ShipEntity
 
 export(PackedScene) var Star
 
+
+onready var Hull_Bars = $healthBars/Viewport/HullHealthBar
+onready var Shield_bar = $healthBars/Viewport/shieldBar
 onready var CenterOfMass = $CenterOfMass
 onready var Heading = $Heading
 onready var MainThruster = $MainThruster
@@ -35,6 +38,11 @@ var boost_cooldown = false
 func _ready():
 	current_hull_integrity = hull_integrity
 	current_shield_integrity = shield_integrity
+	
+	Hull_Bars.max_value = hull_integrity
+	Shield_bar.max_value = shield_integrity
+	Hull_Bars.value = current_hull_integrity
+	Shield_bar.value = current_shield_integrity
 	ShieldTimer.wait_time = 0.5
 
 func _physics_process(delta):
@@ -56,11 +64,15 @@ func take_damage(amount: float):
 	var temp = current_shield_integrity
 	current_shield_integrity -= amount
 	current_shield_integrity = clamp(current_shield_integrity, 0, shield_integrity)
+	Shield_bar.value = current_shield_integrity
+	
 	print(current_shield_integrity, "sheild")
 	if current_shield_integrity <= 0:
 		current_hull_integrity -= (amount - temp)
-		Get_Destoryed()
-		print(current_hull_integrity, "Hull")
+		Hull_Bars.value = current_hull_integrity
+		if current_hull_integrity <=0:
+			Get_Destoryed()
+			print(current_hull_integrity, "Hull")
 
 #Takes a value from -1 to 1
 func set_main_thruster(thrust_amount:float):

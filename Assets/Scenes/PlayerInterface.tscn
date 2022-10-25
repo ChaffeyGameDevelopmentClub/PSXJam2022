@@ -133,6 +133,7 @@ texture_progress = ExtResource( 7 )
 fill_mode = 3
 
 [node name="Warning" type="TextureRect" parent="."]
+visible = false
 margin_left = 285.0
 margin_top = 217.0
 margin_right = 298.0

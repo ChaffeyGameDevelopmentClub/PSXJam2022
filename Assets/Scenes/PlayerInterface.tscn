@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/Fonts/nasal.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/Textures/health.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Assets/Textures/speed.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Textures/heat.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Textures/warning.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Textures/target.png" type="Texture" id=9]
 
 [node name="PlayerInterface" type="Control"]
 anchor_right = 1.0
@@ -138,3 +139,23 @@ margin_right = 298.0
 margin_bottom = 235.0
 rect_scale = Vector2( 2, 2 )
 texture = ExtResource( 8 )
+
+[node name="Target" type="Control" parent="."]
+margin_left = -10.0
+margin_top = -10.0
+margin_right = -10.0
+margin_bottom = -10.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Target" type="TextureRect" parent="Target"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -10.0
+margin_top = -10.0
+margin_right = 10.0
+margin_bottom = 10.0
+texture = ExtResource( 9 )

@@ -6,6 +6,9 @@ onready var shield = $Shield
 var current_thrust_setting: float = 0
 onready var warning_timer = $WarningTimer
 onready var warning = $PlayerInterface/Warning
+onready var camera = $Camera
+onready var target = $PlayerInterface/Target
+var current_enemy_index = 0
 
 func _on_Hurtbox_area_entered(area):
 	var projectile = area.get_parent()
@@ -32,6 +35,21 @@ func stop_warning():
 	warning.visible = false
 
 func _physics_process(delta):
+		
+	var enemies =  get_tree().get_nodes_in_group("enemy")
+	
+	if Input.is_action_just_pressed("cycle_target"):
+		current_enemy_index += 1
+		if current_enemy_index >= len(enemies):
+			current_enemy_index = 0
+	
+	var enemy_pos = enemies[current_enemy_index].translation
+	if !camera.is_position_behind(enemies[current_enemy_index].translation):
+		target.visible = true
+		target.rect_position = camera.unproject_position(enemy_pos)
+	else:
+		target.visible = false
+	
 	#Shooting 
 	if Input.is_action_pressed("fire"):
 		WeaponControls._shoot()

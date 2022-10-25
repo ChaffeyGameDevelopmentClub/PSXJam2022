@@ -18,30 +18,73 @@ _global_script_classes=[ {
 "class": "ShipEntity",
 "language": "GDScript",
 "path": "res://Assets/Scripts/ShipEntity.gd"
+}, {
+"base": "Resource",
+"class": "SpriteMesh",
+"language": "GDScript",
+"path": "res://addons/sprite_mesh/sprite_mesh.gd"
+}, {
+"base": "MeshInstance",
+"class": "SpriteMeshInstance",
+"language": "GDScript",
+"path": "res://addons/sprite_mesh/sprite_mesh_instance.gd"
 } ]
 _global_script_class_icons={
 "PID_Controller": "",
-"ShipEntity": ""
+"ShipEntity": "",
+"SpriteMesh": "res://addons/sprite_mesh/icons/sprite_mesh.png",
+"SpriteMeshInstance": "res://addons/sprite_mesh/icons/sprite_mesh_instance.png"
 }
 
 [application]
 
 config/name="SpaceCat KnifeParty"
-run/main_scene="res://Assets/Scenes/Debug.tscn"
+run/main_scene="res://Assets/Scenes/MainMenu.tscn"
 boot_splash/image="res://Assets/Textures/boot.png"
 config/icon="res://Assets/Textures/boot.png"
 
 [display]
 
-window/size/width=640
-window/size/height=480
-window/size/fullscreen=true
+window/size/width=320
+window/size/height=256
+window/size/resizable=false
+window/size/fullscreen=0.001
+window/size/test_width=640
+window/size/test_height=480
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/sprite_mesh/plugin.cfg" )
 
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
+
+[importer_defaults]
+
+texture={
+"compress/bptc_ldr": 0,
+"compress/hdr_mode": 0,
+"compress/lossy_quality": 0.7,
+"compress/mode": 0,
+"compress/normal_map": 0,
+"detect_3d": false,
+"flags/anisotropic": false,
+"flags/filter": false,
+"flags/mipmaps": false,
+"flags/repeat": 0,
+"flags/srgb": 2,
+"process/HDR_as_SRGB": false,
+"process/fix_alpha_border": true,
+"process/invert_color": false,
+"process/normal_map_invert_y": false,
+"process/premult_alpha": false,
+"size_limit": 0,
+"stream": false,
+"svg/scale": 1.0
+}
 
 [input]
 

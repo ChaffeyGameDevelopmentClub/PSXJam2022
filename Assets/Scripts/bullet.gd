@@ -1,7 +1,7 @@
 extends Spatial
 
 export var speed = 2000
-var KILL_TIME = 3
+var KILL_TIME = 15
 var timer = 0
 var Damage = 10
 var entity_speed := 0.0
@@ -17,14 +17,17 @@ func _physics_process(delta):
 func _on_1_body_entered(body:Node):#bullet's code
 	print("hit 1")
 	
-	var Ship_Stats = body as ShipEntity
-	Ship_Stats.take_damage(Damage)
+	if body is ShipEntity:
+		var Ship_Stats = body as ShipEntity
+		Ship_Stats.take_damage(Damage)
 	$bullet1.queue_free()
 
 func _on_2_body_entered(body:Node):#bullet2's code
 	print("hit 2 ")
+
+	if body is ShipEntity:
+		var Ship_Stats = body as ShipEntity
+		
+		Ship_Stats.take_damage(Damage)
 	$bullet2.queue_free()
-	var Ship_Stats = body as ShipEntity
-	
-	Ship_Stats.take_damage(Damage)
 

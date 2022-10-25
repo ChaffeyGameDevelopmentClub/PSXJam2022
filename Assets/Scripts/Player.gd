@@ -13,6 +13,7 @@ onready var shield_bar = $PlayerInterface/Shield
 var current_enemy_index = 0
 
 func _on_Hurtbox_area_entered(area):
+	return
 	var projectile = area.get_parent()
 	if projectile.is_in_group("enemy"):
 		#take_damage(projectile.damage) 

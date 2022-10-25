@@ -1,10 +1,9 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Assets/Textures/Prototype/Red/texture_01.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Textures/warning.png" type="Texture" id=1]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 1 )
-uv1_triplanar = true
 
 [node name="EnemyModel" type="CSGCombiner"]
 material_override = SubResource( 1 )

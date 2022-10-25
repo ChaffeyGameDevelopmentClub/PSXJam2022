@@ -5,6 +5,7 @@
 [ext_resource path="res://Assets/Scripts/GunController.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Scenes/bullets.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Muzzle.gd" type="Script" id=5]
+[ext_resource path="res://Assets/Scenes/PlayerInterface.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CapsuleShape" id=1]
 
@@ -13,7 +14,6 @@
 [node name="ShipEntity" groups=["player"] instance=ExtResource( 1 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 script = ExtResource( 2 )
-thrust_strength = 1.0
 
 [node name="CollisionShape2" type="CollisionShape" parent="Hurtbox" index="0"]
 shape = SubResource( 1 )
@@ -47,5 +47,15 @@ one_shot = true
 
 [connection signal="timeout" from="WeaponControls/Spawn_location_Missile/Timer3" to="WeaponControls/Spawn_location_Missile" method="_on_Timer_timeout"]
 [connection signal="timeout" from="WeaponControls/Spawn_location_Missile/Timer4" to="WeaponControls/Spawn_location_Missile" method="_on_Timer2_timeout"]
+[node name="PlayerInterface" parent="." index="9" instance=ExtResource( 5 )]
+
+[node name="Shield" parent="." index="10"]
+visible = false
+invert_faces = true
+
+[node name="WarningTimer" type="Timer" parent="." index="11"]
+wait_time = 0.25
+
 [connection signal="timeout" from="WeaponControls/Timer" to="WeaponControls" method="_on_Timer_timeout"]
 [connection signal="timeout" from="WeaponControls/Timer2" to="WeaponControls" method="_on_Timer2_timeout"]
+[connection signal="timeout" from="WarningTimer" to="." method="_on_Timer_timeout"]

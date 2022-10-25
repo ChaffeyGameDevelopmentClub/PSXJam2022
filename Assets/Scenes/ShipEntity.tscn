@@ -1,8 +1,25 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Assets/Scripts/ShipEntity.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Shaders/Shield.tres" type="Shader" id=2]
 
-[node name="ShipEntity" type="RigidBody"]
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 2 )
+shader_param/scale = 10.0
+shader_param/line_speed = 0.5
+shader_param/ripple_speed = 0.5
+shader_param/line_color = Color( 0.933333, 0, 1, 1 )
+shader_param/ripple_color = Color( 0.933333, 0, 1, 0.00392157 )
+shader_param/surface_color = Color( 0.933333, 0, 1, 0 )
+shader_param/sphere_size = 10.0
+shader_param/pos1 = Vector3( 0, 0, 0 )
+shader_param/pos2 = Vector3( 10000, 10000, 10000 )
+shader_param/pos3 = Vector3( 10000, 10000, 10000 )
+shader_param/pos4 = Vector3( 10000, 10000, 10000 )
+shader_param/pos5 = Vector3( 10000, 10000, 10000 )
+shader_param/pos6 = Vector3( 10000, 10000, 10000 )
+
+[node name="ShipEntity2" type="RigidBody"]
 gravity_scale = 0.0
 linear_damp = 2.0
 angular_damp = 2.0
@@ -10,7 +27,6 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
-thrust_strength = 10.0
 
 [node name="MainThruster" type="RayCast" parent="."]
 enabled = true
@@ -33,6 +49,10 @@ wait_time = 0.5
 wait_time = 0.5
 
 [node name="Hurtbox" type="Area" parent="."]
+
+[node name="Shield" type="CSGSphere" parent="."]
+radius = 10.0
+material = SubResource( 1 )
 
 [connection signal="timeout" from="ShieldTimer" to="." method="_on_ShieldTimer_timeout"]
 [connection signal="timeout" from="BoostTimer" to="." method="_on_BoostTimer_timeout"]

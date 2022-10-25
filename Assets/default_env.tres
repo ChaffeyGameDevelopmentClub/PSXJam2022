@@ -1,6 +1,6 @@
 [gd_resource type="Environment" load_steps=3 format=2]
 
-[ext_resource path="res://Assets/Textures/Space.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Textures/PinkSpace.png" type="Texture" id=1]
 
 [sub_resource type="PanoramaSky" id=1]
 panorama = ExtResource( 1 )
@@ -9,6 +9,6 @@ panorama = ExtResource( 1 )
 background_mode = 2
 background_sky = SubResource( 1 )
 ambient_light_color = Color( 1, 1, 1, 1 )
-ambient_light_energy = 0.04
+ambient_light_energy = 0.96
 ambient_light_sky_contribution = 0.0
 glow_enabled = true

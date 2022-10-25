@@ -1,0 +1,208 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/Scripts/MenuCam.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Fonts/hypik.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Assets/Fonts/hypik_small.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Assets/MainMenu.gd" type="Script" id=4]
+
+[sub_resource type="Shader" id=1]
+code = "/*
+	動的電子背景シェーダー by あるる（きのもと 結衣） @arlez80
+	Procedural Electric Background Shader by Yui Kinomoto @arlez80
+
+	MIT License
+*/
+shader_type canvas_item;
+
+uniform vec4 background_color : hint_color = vec4( 0.0, 0.0, 0.0, 1.0 );
+uniform vec4 line_color : hint_color = vec4( 0.0, 1.0, 1.0, 1.0 );
+uniform float line_freq = 9.56;
+uniform float height = 0.6;
+uniform float speed = 0.8;
+uniform vec2 scale = vec2( 2.0, 16.0 );
+
+void fragment( )
+{
+	vec2 uv = UV * scale;
+	float shift = cos( floor( uv.y ) );
+	uv.x += shift;
+
+	float freq = clamp( cos( uv.x * line_freq ) * 3.0, 0.0, 1.0 ) * height;
+	float line = 1.0 - clamp( abs( freq - mod( uv.y, 1.0 ) ) * 11.0, 0.0, 1.0 );
+
+	COLOR = mix( background_color, line_color, line * mod( uv.x - TIME * speed * abs( shift ), 1.0 ) /*  * mod( TIME + shift, 1.0 ) */ );
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/background_color = Color( 0, 0, 0, 0 )
+shader_param/line_color = Color( 0.933333, 0, 1, 1 )
+shader_param/line_freq = 9.56
+shader_param/height = 0.6
+shader_param/speed = 0.2
+shader_param/scale = Vector2( 2, 16 )
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+script = ExtResource( 1 )
+
+[node name="Control2" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_scale = Vector2( 0.5, 0.5 )
+
+[node name="ColorRect" type="ColorRect" parent="Control2"]
+material = SubResource( 2 )
+margin_left = -150.0
+margin_top = 1.0
+margin_right = 801.0
+margin_bottom = 510.0
+
+[node name="Control" type="Control" parent="Control2"]
+margin_left = -32.0
+margin_right = 33.0
+margin_bottom = 69.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ColorRect3" type="ColorRect" parent="Control2/Control"]
+margin_left = 148.0
+margin_top = -220.0
+margin_right = 221.0
+margin_bottom = 797.0
+rect_rotation = -74.9999
+rect_pivot_offset = Vector2( 25.7605, 454.162 )
+color = Color( 0.933333, 0, 1, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="Control2/Control"]
+margin_left = 367.0
+margin_top = -402.0
+margin_right = 440.0
+margin_bottom = 615.0
+rect_rotation = -74.9999
+rect_pivot_offset = Vector2( 25.7605, 454.162 )
+color = Color( 0.933333, 0, 1, 1 )
+
+[node name="Label" type="Label" parent="Control2/Control"]
+margin_left = 46.0
+margin_top = -31.0
+margin_right = 715.0
+margin_bottom = 198.0
+rect_rotation = 15.0
+custom_fonts/font = ExtResource( 2 )
+text = "SpaceCat
+KnifeParty"
+align = 1
+
+[node name="Start_Button" type="Button" parent="Control2"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = -296.0
+margin_top = 170.0
+margin_right = 905.0
+margin_bottom = 222.0
+rect_rotation = 15.0
+custom_fonts/font = ExtResource( 3 )
+text = "Start"
+
+[node name="startbox" type="ColorRect" parent="Control2/Start_Button"]
+show_behind_parent = true
+margin_left = 721.975
+margin_top = -427.425
+margin_right = 773.975
+margin_bottom = 802.575
+rect_rotation = 89.9999
+rect_pivot_offset = Vector2( 25.7605, 454.162 )
+mouse_filter = 1
+color = Color( 0.933333, 0, 1, 1 )
+
+[node name="Label" type="Label" parent="Control2/Start_Button"]
+margin_left = 537.878
+margin_top = 5.991
+margin_right = 663.878
+margin_bottom = 51.991
+mouse_filter = 1
+custom_fonts/font = ExtResource( 3 )
+text = "Start"
+
+[node name="Credits_Button" type="Button" parent="Control2"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = -362.0
+margin_top = 217.0
+margin_right = 839.0
+margin_bottom = 269.0
+rect_rotation = 15.0
+custom_fonts/font = ExtResource( 3 )
+text = "Credits"
+
+[node name="creditsbox" type="ColorRect" parent="Control2/Credits_Button"]
+show_behind_parent = true
+margin_left = 720.75
+margin_top = -428.132
+margin_right = 772.75
+margin_bottom = 801.868
+rect_rotation = 89.9999
+rect_pivot_offset = Vector2( 25.7605, 454.162 )
+mouse_filter = 1
+color = Color( 0.933333, 0, 1, 1 )
+
+[node name="Label2" type="Label" parent="Control2/Credits_Button"]
+margin_left = 507.019
+margin_top = 2.87158
+margin_right = 696.019
+margin_bottom = 48.8716
+mouse_filter = 1
+custom_fonts/font = ExtResource( 3 )
+text = "Credits"
+
+[node name="Quit_Button" type="Button" parent="Control2"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = -472.0
+margin_top = 252.0
+margin_right = 729.0
+margin_bottom = 304.0
+rect_rotation = 15.0
+custom_fonts/font = ExtResource( 3 )
+text = "Quit"
+
+[node name="quitbox" type="ColorRect" parent="Control2/Quit_Button"]
+show_behind_parent = true
+margin_left = 721.716
+margin_top = -428.391
+margin_right = 773.716
+margin_bottom = 801.609
+rect_rotation = 89.9999
+rect_pivot_offset = Vector2( 25.7605, 454.162 )
+mouse_filter = 1
+color = Color( 0.933333, 0, 1, 1 )
+
+[node name="Label3" type="Label" parent="Control2/Quit_Button"]
+margin_left = 550.435
+margin_top = 2.62631
+margin_right = 739.435
+margin_bottom = 48.6263
+mouse_filter = 1
+custom_fonts/font = ExtResource( 3 )
+text = "Quit"
+
+[node name="Blindfold" type="ColorRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -21.0
+margin_top = -12.0
+margin_right = 354.0
+margin_bottom = 280.0
+mouse_filter = 2
+color = Color( 0.933333, 0, 1, 1 )
+
+[connection signal="mouse_entered" from="Control2/Start_Button" to="." method="_on_Start_Button_mouse_entered"]
+[connection signal="mouse_exited" from="Control2/Start_Button" to="." method="_on_Start_Button_mouse_exited"]
+[connection signal="pressed" from="Control2/Start_Button" to="." method="_on_Start_Button_pressed"]
+[connection signal="mouse_entered" from="Control2/Credits_Button" to="." method="_on_Credits_Button_mouse_entered"]
+[connection signal="mouse_exited" from="Control2/Credits_Button" to="." method="_on_Credits_Button_mouse_exited"]
+[connection signal="pressed" from="Control2/Credits_Button" to="." method="_on_Credits_Button_pressed"]
+[connection signal="mouse_entered" from="Control2/Quit_Button" to="." method="_on_Quit_Button_mouse_entered"]
+[connection signal="mouse_exited" from="Control2/Quit_Button" to="." method="_on_Quit_Button_mouse_exited"]
+[connection signal="pressed" from="Control2/Quit_Button" to="." method="_on_Quit_Button_pressed"]

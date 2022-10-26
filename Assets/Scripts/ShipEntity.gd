@@ -3,7 +3,8 @@ extends RigidBody
 class_name ShipEntity
 
 
-export(PackedScene) var Star
+#export(PackedScene) var Star
+onready var Star = preload("res://Assets/Scenes/Particle_On_Death.tscn")
 
 onready var CenterOfMass = $CenterOfMass
 onready var Heading = $Heading

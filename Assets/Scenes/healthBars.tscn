@@ -25,6 +25,7 @@ bg_color = Color( 0.937255, 0.054902, 0.054902, 0 )
 viewport_path = NodePath("Viewport")
 
 [node name="healthBars" type="Spatial"]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 1, 0, 1.5262, 0 )
 
 [node name="Viewport" type="Viewport" parent="."]
 size = Vector2( 440, 60 )

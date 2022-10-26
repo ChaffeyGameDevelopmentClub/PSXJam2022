@@ -22,7 +22,7 @@ var current_shield_integrity = 0
 export (bool) var flight_assist = true #Will never be false for AI
 export (float) var thrust_strength = 1
 export (float) var shield_regen_rate = 1
-export (float) var shield_regen_cooldown_seconds = 0.5 #Seconds
+export (float) var shield_regen_cooldown_seconds = 2 #Seconds
 var thrust_multiplier = 0
 export (float) var ship_linear_damp = 2
 export (float) var ship_angular_damp = 2
@@ -36,6 +36,7 @@ var shield_regen = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	ShieldTimer.wait_time = shield_regen_cooldown_seconds
 	current_hull_integrity = hull_integrity
 	current_shield_integrity = shield_integrity
 	Hull_bar.max_value = hull_integrity
@@ -45,8 +46,10 @@ func _ready():
 	
 	
 func _physics_process(delta):
+	
 	if shield_regen:
 		current_shield_integrity += 10*delta
+		Shield_bar.value = current_shield_integrity
 		
 	if (flight_assist):
 		linear_damp = ship_linear_damp

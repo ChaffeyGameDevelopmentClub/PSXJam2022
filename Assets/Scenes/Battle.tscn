@@ -54,7 +54,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.5158 )
 speed = 0
 
 [node name="Enemy" parent="." instance=ExtResource( 1 )]
-transform = Transform( -1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, -1, 0, 0, 419.745 )
-hull_integrity = 20.0
+transform = Transform( -1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, -1, 0, 25.7176, -929.398 )
+hull_integrity = 30.0
 shield_integrity = 20.0
 thrust_strength = 0.0

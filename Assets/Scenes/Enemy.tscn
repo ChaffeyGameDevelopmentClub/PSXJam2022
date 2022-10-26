@@ -29,7 +29,7 @@ lifespan = 10.0
 startColor = Color( 1, 0, 0.984314, 1 )
 
 [node name="healthBars" parent="." index="10"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.61959, 0 )
+transform = Transform( 2, 0, 0, 0, 3, 0, 0, 0, 1, 0.100387, 6.38445, -0.0338726 )
 
 [node name="WeaponControls" parent="." index="11" instance=ExtResource( 5 )]
 Bullet = ExtResource( 6 )

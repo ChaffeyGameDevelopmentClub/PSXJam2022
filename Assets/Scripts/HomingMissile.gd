@@ -23,5 +23,6 @@ func _physics_process(delta):
 func _on_Missile_body_entered(body):
 	var Ship_Stats = body as ShipEntity
 	print("hit")
-	Ship_Stats.take_damage(damage)
-	queue_free()
+	if Ship_Stats:
+		Ship_Stats.take_damage(damage)
+		queue_free()

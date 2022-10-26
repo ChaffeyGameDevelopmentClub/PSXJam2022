@@ -15,7 +15,7 @@ thrust_strength = 70.0
 [node name="Hurtbox" parent="." index="5"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.280826, 0.832912 )
 
-[node name="TorqueController" type="Node" parent="." index="6"]
+[node name="TorqueController" type="Node" parent="." index="7"]
 script = ExtResource( 4 )
 _Kp = 40.0
 _Ki = 0.0
@@ -23,10 +23,13 @@ _Kd = 30.0
 
 [node name="IterationTimer" type="Timer" parent="TorqueController" index="0"]
 
-[node name="MotionTrail" parent="." index="7" instance=ExtResource( 3 )]
+[node name="MotionTrail" parent="." index="8" instance=ExtResource( 3 )]
 fromWidth = 1.0
 lifespan = 10.0
 startColor = Color( 1, 0, 0.984314, 1 )
 
-[node name="WeaponControls" parent="." index="10" instance=ExtResource( 5 )]
+[node name="healthBars" parent="." index="10"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.61959, 0 )
+
+[node name="WeaponControls" parent="." index="11" instance=ExtResource( 5 )]
 Bullet = ExtResource( 6 )

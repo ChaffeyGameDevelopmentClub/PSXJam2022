@@ -5,7 +5,8 @@ class_name ShipEntity
 
 #export(PackedScene) var Star
 onready var Star = preload("res://Assets/Scenes/Particle_On_Death.tscn")
-
+onready var Hull_bar = $healthBars/Viewport/HullHealthBar
+onready var Shield_bar = $healthBars/Viewport/shieldBar
 onready var CenterOfMass = $CenterOfMass
 onready var Heading = $Heading
 onready var MainThruster = $MainThruster
@@ -37,7 +38,12 @@ var shield_regen = true
 func _ready():
 	current_hull_integrity = hull_integrity
 	current_shield_integrity = shield_integrity
-
+	Hull_bar.max_value = hull_integrity
+	Shield_bar.max_value = shield_integrity
+	Hull_bar.value = current_hull_integrity
+	Shield_bar.value = current_shield_integrity
+	
+	
 func _physics_process(delta):
 	if shield_regen:
 		current_shield_integrity += 10*delta
@@ -59,7 +65,9 @@ func take_damage(amount: float):
 	print("Took damage")
 	var temp = current_shield_integrity
 	current_shield_integrity -= amount
+	
 	current_shield_integrity = clamp(current_shield_integrity, 0, shield_integrity)
+	Shield_bar.value = current_shield_integrity
 	shield_regen = false
 	ShieldTimer.start()
 	if (current_shield_integrity > 0):
@@ -68,6 +76,7 @@ func take_damage(amount: float):
 	print(current_shield_integrity, " shield ")
 	if current_shield_integrity <= 0:
 		current_hull_integrity -= (amount - temp)
+		Hull_bar.value = current_hull_integrity
 		print(current_hull_integrity, " hull ")
 	if current_hull_integrity <= 0:
 		Get_Destroyed()
@@ -105,10 +114,10 @@ func _on_Hurtbox_area_entered(area):
   pass
 
 func Get_Destroyed():
-	#var Death_Particles = Star.instance()
-	#Death_Particles.global_transform = CenterOfMass.global_transform
-	#var scene_root = get_tree().get_root().get_children()[0]
-	#scene_root.add_child(Death_Particles)
+	var Death_Particles = Star.instance()
+	Death_Particles.global_transform = CenterOfMass.global_transform
+	var scene_root = get_tree().get_root().get_children()[0]
+	scene_root.add_child(Death_Particles)
 	queue_free()
 
 func _on_ShieldVisTimer_timeout():

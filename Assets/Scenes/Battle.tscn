@@ -54,49 +54,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.5158 )
 speed = 0
 
 [node name="Enemy" parent="." instance=ExtResource( 1 )]
-hull_integrity = 100.0
-shield_integrity = 70.0
-
-[node name="Enemy2" parent="." instance=ExtResource( 1 )]
-transform = Transform( -1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, -1, 0, 1033.71, 0 )
-hull_integrity = 100.0
-shield_integrity = 70.0
-
-[node name="Enemy3" parent="." instance=ExtResource( 1 )]
-transform = Transform( -1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, -1, 0, -1121.5, 0 )
-hull_integrity = 100.0
-shield_integrity = 70.0
-
-[node name="Enemy4" parent="." instance=ExtResource( 1 )]
-transform = Transform( -1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, -1, 0, 1169.68, 0 )
-hull_integrity = 100.0
-shield_integrity = 70.0
-
-[node name="Enemy5" parent="." instance=ExtResource( 1 )]
-transform = Transform( -1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, -1, 0.000169381, 1107.29, 1420.88 )
-hull_integrity = 100.0
-shield_integrity = 70.0
-
-[node name="Enemy6" parent="." instance=ExtResource( 1 )]
-transform = Transform( -1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, -1, -9.88948e-05, 0, -829.592 )
-hull_integrity = 100.0
-shield_integrity = 70.0
-
-[node name="Enemy7" parent="." instance=ExtResource( 1 )]
-hull_integrity = 100.0
-shield_integrity = 70.0
-
-[node name="Enemy8" parent="." instance=ExtResource( 1 )]
-transform = Transform( -1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, -1, -4635.3, 0, 0.00055257 )
-hull_integrity = 100.0
-shield_integrity = 70.0
-
-[node name="Enemy9" parent="." instance=ExtResource( 1 )]
-transform = Transform( -1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, -1, 944.942, 0, -0.000112646 )
-hull_integrity = 100.0
-shield_integrity = 70.0
-
-[node name="Enemy10" parent="." instance=ExtResource( 1 )]
-transform = Transform( -1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, -1, -6.76712e-05, 0, -567.669 )
-hull_integrity = 100.0
-shield_integrity = 70.0
+transform = Transform( -1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, -1, 0, 0, 419.745 )
+hull_integrity = 20.0
+shield_integrity = 20.0
+thrust_strength = 0.0

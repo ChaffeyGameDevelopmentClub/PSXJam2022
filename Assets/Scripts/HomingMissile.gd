@@ -3,7 +3,7 @@ extends Area
 #missle assets : https://github.com/IndieQuest/GodogFightSimple
 
 var shoot = false
-var damage = 2
+var damage = 100
 var speed = 200
 var target = null
 

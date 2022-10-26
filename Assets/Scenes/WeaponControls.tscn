@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Assets/Scenes/bullets.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Scripts/GunController.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Scripts/HomingController.gd" type="Script" id=3]
 
 [node name="WeaponControls" type="Spatial"]
 script = ExtResource( 2 )
@@ -15,5 +16,16 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42109e-14, 0, 2.59651 )
 [node name="Timer2" type="Timer" parent="."]
 one_shot = true
 
+[node name="HomingWeapon" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.597 )
+script = ExtResource( 3 )
+
+[node name="Timer" type="Timer" parent="HomingWeapon"]
+
+[node name="Timer2" type="Timer" parent="HomingWeapon"]
+one_shot = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]
+[connection signal="timeout" from="HomingWeapon/Timer" to="HomingWeapon" method="_on_Timer_timeout"]
+[connection signal="timeout" from="HomingWeapon/Timer2" to="HomingWeapon" method="_on_Timer2_timeout"]

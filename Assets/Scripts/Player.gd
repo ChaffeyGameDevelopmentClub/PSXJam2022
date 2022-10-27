@@ -64,7 +64,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("secondary_fire"):
 		if enemies:
 			var enemy = enemies[current_enemy_index]
-			WeaponControls.get_node("HomingWeapon")._secondary_shoot(enemy)
+			WeaponControls.get_node("HomingWeapon")._secondary_shoot(enemy, target)
 
 	#movement
 	if Input.is_action_just_pressed("toggle_assist"):

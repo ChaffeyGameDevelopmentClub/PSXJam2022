@@ -21,12 +21,13 @@ func _ready():
 func _process(delta):
 	pass
 	
-func _secondary_shoot(enemy):
+func _secondary_shoot(enemy, target):
 	if !Is_Reloading:
 		if can_shoot:
 			var New_Homing_Missile = Homing_Missile.instance()
 			New_Homing_Missile.transform = transform
-			New_Homing_Missile.target = enemy
+			New_Homing_Missile.enemy = enemy
+			New_Homing_Missile.target = target
 			New_Homing_Missile.shoot = true
 			add_child(New_Homing_Missile)
 			Missiles_shot +=1

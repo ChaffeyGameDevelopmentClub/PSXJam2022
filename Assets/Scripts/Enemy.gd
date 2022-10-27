@@ -26,9 +26,9 @@ func _on_Hurtbox_area_entered(area):
 func _physics_process(delta):
 	
 	var player_dist = self.translation.distance_to(player.translation)
-	if player_dist < 50:
+	if player_dist < 100:
 		state = FLEEING
-	elif (player_dist < 1000 and player_dist > 50 ):
+	elif (player_dist < 5000 + rand_range(-5000, 5000) and player_dist > 100 ):
 		state = SEEKING
 
 	match state:

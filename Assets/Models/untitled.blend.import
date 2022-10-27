@@ -1,0 +1,14 @@
+[remap]
+
+importer="antonWetzel.blenderImporter"
+type="PackedScene"
+path="res://.import/untitled.blend-2256abe3cf95b1dbc3bd9ed4bdfe9304.scn"
+
+[deps]
+
+source_file="res://Assets/Models/untitled.blend"
+dest_files=[ "res://.import/untitled.blend-2256abe3cf95b1dbc3bd9ed4bdfe9304.scn" ]
+
+[params]
+
+apply_modifiers=true

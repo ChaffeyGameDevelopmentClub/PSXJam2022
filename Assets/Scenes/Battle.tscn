@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Assets/Scenes/CatEnemy1.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/SFX/energy-of-the-morning-ambient-chillout-lounge-relaxing-music-7203.mp3" type="AudioStream" id=1]
 [ext_resource path="res://Assets/Scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Scenes/CatPlanet.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Textures/Prototype/Dark/texture_01.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Scenes/enemy_bullets.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Scenes/CatPlanet.gd" type="Script" id=5]
 [ext_resource path="res://Assets/Scripts/Battle.gd" type="Script" id=10]
 
 [sub_resource type="SpatialMaterial" id=1]
@@ -14,13 +14,13 @@ albedo_texture = ExtResource( 4 )
 script = ExtResource( 10 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74227e-08, 0, -1, -0.000102429, 0, -1171.65 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74227e-08, 0, -1, 0, 0, 0 )
 angular_damp = 0.0
 hull_integrity = 100.0
 shield_integrity = 70.0
 turn_handling = 100.0
 move_handling = 4.0
-thrust_strength = 200.0
+thrust_strength = 300.0
 boost_time = 2.0
 boost_strength = 200.0
 
@@ -37,7 +37,24 @@ margin_bottom = 297.0
 color = Color( 0.933333, 0, 1, 1 )
 
 [node name="CatPlanet" parent="." instance=ExtResource( 3 )]
-transform = Transform( 10000, 0, 0, 0, 10000, 0, 0, 0, 10000, 0, 0, -7597.01 )
+transform = Transform( 10000, 0, 0, 0, 10000, 0, 0, 0, 10000, 0, 0, -7567.62 )
+script = ExtResource( 5 )
+
+[node name="EnemySpawn" type="Position3D" parent="CatPlanet"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.616991 )
+
+[node name="eye1" type="CSGSphere" parent="CatPlanet"]
+transform = Transform( 0.0001, 0, 0, 0, 0.0001, 0, 0, 0, 0.0001, -0.105, 0.026, 0.222 )
+radius = 100.0
+
+[node name="eye2" type="CSGSphere" parent="CatPlanet"]
+transform = Transform( 0.0001, 0, 0, 0, 0.0001, 0, 0, 0, 0.0001, -0.0626672, 0.0258206, 0.222183 )
+radius = 100.0
+
+[node name="mouth" type="CSGPolygon" parent="CatPlanet"]
+transform = Transform( 0.999418, 0.0340971, 0, -0.0340971, 0.999418, 0, 0, 0, 1, -0.0778189, -0.0266497, 0.226996 )
+polygon = PoolVector2Array( -0.0165424, 0.00552695, -0.0351621, 0.0189611, -0.0183757, 0.0168887, -0.0128673, 0.0314326, -0.00238182, 0.0163538, 0.0176783, 0.022637, 0.00381408, 0.00730211, -0.0110111, 0.0172322 )
+depth = 0.01
 
 [node name="room" type="CSGBox" parent="."]
 visible = false
@@ -49,12 +66,5 @@ height = 10000.0
 depth = 10000.0
 material = SubResource( 1 )
 
-[node name="bullets" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.5158 )
-speed = 0
-
-[node name="Enemy" parent="." instance=ExtResource( 1 )]
-transform = Transform( -1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, -1, 0, 25.7176, -929.398 )
-hull_integrity = 30.0
-shield_integrity = 20.0
-thrust_strength = 0.0
+[node name="Battletrack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )

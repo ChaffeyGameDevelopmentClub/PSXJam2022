@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/black-box-drum-drum-drum-14105.mp3-f6c5c6230eae1123a0d408a7d02ef502.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/black-box-drum-drum-drum-14105.mp3"
+dest_files=[ "res://.import/black-box-drum-drum-drum-14105.mp3-f6c5c6230eae1123a0d408a7d02ef502.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

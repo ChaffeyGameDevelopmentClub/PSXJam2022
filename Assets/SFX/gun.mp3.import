@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/gun.mp3-50c7667328b3c1f0f31ade8326d633f7.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/gun.mp3"
+dest_files=[ "res://.import/gun.mp3-50c7667328b3c1f0f31ade8326d633f7.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

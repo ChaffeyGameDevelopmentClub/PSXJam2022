@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/energy-of-the-morning-ambient-chillout-lounge-relaxing-music-7203.mp3-df926ecb6318b21ca4ccb26a1a609b96.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/energy-of-the-morning-ambient-chillout-lounge-relaxing-music-7203.mp3"
+dest_files=[ "res://.import/energy-of-the-morning-ambient-chillout-lounge-relaxing-music-7203.mp3-df926ecb6318b21ca4ccb26a1a609b96.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

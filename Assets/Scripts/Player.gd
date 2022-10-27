@@ -10,7 +10,11 @@ onready var camera = $Camera
 onready var target = $PlayerInterface/Target
 onready var health_bar = $PlayerInterface/Health
 onready var shield_bar = $PlayerInterface/Shield
+onready var engine_sound = $engine_sound
 var current_enemy_index = 0
+
+func  Get_Destroyed():
+	pass
 
 func _on_Hurtbox_area_entered(area):
 	return
@@ -27,7 +31,10 @@ func _input(event):
 
 func _on_Timer_timeout():
 	warning_timer.start()
-	warning.visible = !warning.visible
+	if $PlayerInterface/Message.visible == true:
+		$PlayerInterface/WarningMessage.visible = !$PlayerInterface/WarningMessage.visible
+	else:
+		warning.visible = !warning.visible
 	
 #When a missile is locked
 func start_warning():
@@ -37,11 +44,28 @@ func stop_warning():
 	warning_timer.stop()
 	warning.visible = false
 
+func start_message(time, message):
+	$PlayerInterface/Message.text = message
+	$PlayerInterface/Message.visible = true
+	$PlayerInterface/WarningMessage.visible = true
+	start_warning()
+	yield(get_tree().create_timer(time), "timeout")
+	stop_warning()
+	$PlayerInterface/Message.visible = false
+	$PlayerInterface/WarningMessage.visible = false
+
+var last_enemy_count = 0
 func _physics_process(delta):
+	engine_sound.unit_db = current_thrust_setting - 50
+	engine_sound.unit_db = clamp(engine_sound.unit_db, current_thrust_setting - 70, 0)
+	engine_sound.pitch_scale = (current_thrust_setting/400) + 0.001
+	
 	health_bar.value = current_hull_integrity
 	shield_bar.value = current_shield_integrity
 	var enemies =  get_tree().get_nodes_in_group("enemy")
 	
+	if last_enemy_count != len(enemies):
+		current_enemy_index = 0
 	if Input.is_action_just_pressed("cycle_target"):
 		current_enemy_index += 1
 		if current_enemy_index >= len(enemies):
@@ -55,11 +79,12 @@ func _physics_process(delta):
 			target.visible = false
 	else:
 		target.visible = false
+		
+	last_enemy_count = len(enemies)
 	
 	#Shooting 
 	if Input.is_action_pressed("fire"):
 		WeaponControls._shoot()
-		
 	
 	if Input.is_action_pressed("secondary_fire"):
 		if enemies:
@@ -103,6 +128,7 @@ func _physics_process(delta):
 		get_tree().quit()
 	
 func _ready():
+	engine_sound.play()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	WeaponControls.current_group = "player"
 

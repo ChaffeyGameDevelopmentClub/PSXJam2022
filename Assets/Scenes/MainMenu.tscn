@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/Scripts/MenuCam.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/hypik.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Assets/Fonts/hypik_small.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Assets/MainMenu.gd" type="Script" id=4]
+[ext_resource path="res://Assets/SFX/uiselect.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/SFX/chill-lo-fi-hip-hop-8308.mp3" type="AudioStream" id=6]
 
 [sub_resource type="Shader" id=1]
 code = "/*
@@ -196,6 +198,13 @@ margin_right = 354.0
 margin_bottom = 280.0
 mouse_filter = 2
 color = Color( 0.933333, 0, 1, 1 )
+
+[node name="select" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = 5.2
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
 
 [connection signal="mouse_entered" from="Control2/Start_Button" to="." method="_on_Start_Button_mouse_entered"]
 [connection signal="mouse_exited" from="Control2/Start_Button" to="." method="_on_Start_Button_mouse_exited"]

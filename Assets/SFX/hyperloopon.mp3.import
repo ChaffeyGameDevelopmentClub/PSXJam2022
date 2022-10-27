@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/hyperloopon.mp3-ce6b93330fea07f9f6507286da8e5e9f.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/hyperloopon.mp3"
+dest_files=[ "res://.import/hyperloopon.mp3-ce6b93330fea07f9f6507286da8e5e9f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

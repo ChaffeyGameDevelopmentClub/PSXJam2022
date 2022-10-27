@@ -9,6 +9,7 @@ var Is_Reloading = false
 var Bullets_shot = 0
 var Max_Bullet = 50
 var current_group = ""
+signal fire
 
 export(PackedScene) var Bullet
 export var muzzle_speed = 20
@@ -26,6 +27,7 @@ func _process(delta):
 func _shoot():
 	if !Is_Reloading:
 		if can_shoot:
+			emit_signal("fire")
 			var New_bullet = Bullet.instance()
 			New_bullet.add_to_group("player_projectile")
 			New_bullet.entity_speed = (get_parent().linear_velocity.length())

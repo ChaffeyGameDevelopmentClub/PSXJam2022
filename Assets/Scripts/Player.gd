@@ -11,6 +11,7 @@ onready var target = $PlayerInterface/Target
 onready var health_bar = $PlayerInterface/Health
 onready var shield_bar = $PlayerInterface/Shield
 onready var engine_sound = $engine_sound
+onready var shoot_sound = $shoot_sound
 var current_enemy_index = 0
 
 func  Get_Destroyed():
@@ -85,6 +86,7 @@ func _physics_process(delta):
 	#Shooting 
 	if Input.is_action_pressed("fire"):
 		WeaponControls._shoot()
+		
 	
 	if Input.is_action_pressed("secondary_fire"):
 		if enemies:
@@ -131,4 +133,7 @@ func _ready():
 	engine_sound.play()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	WeaponControls.current_group = "player"
+
+func _on_WeaponControls_fire():
+	shoot_sound.play()
 

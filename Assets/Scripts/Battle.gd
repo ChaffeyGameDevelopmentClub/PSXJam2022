@@ -35,7 +35,6 @@ func _process(delta):
 	if not phase_2:
 		var enemies = get_tree().get_nodes_in_group("enemy")
 		if len(enemies) <= 0:
-			print("e")
 			phase_2 = true
 			for i in range(10):
 				var new_enemy = enemy_one.instance()

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/cat-meow-14536.mp3-65991922b33bc981a4a8046319d61bb3.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/cat-meow-14536.mp3"
+dest_files=[ "res://.import/cat-meow-14536.mp3-65991922b33bc981a4a8046319d61bb3.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

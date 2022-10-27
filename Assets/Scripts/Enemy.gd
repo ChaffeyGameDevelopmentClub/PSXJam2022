@@ -14,6 +14,7 @@ enum {
 }
 
 func _ready():
+	$Engine.play()
 	set_main_thruster(0)
 
 func _on_Hurtbox_area_entered(area):

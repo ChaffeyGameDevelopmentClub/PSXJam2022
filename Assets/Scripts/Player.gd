@@ -11,6 +11,8 @@ onready var camera = $Camera
 onready var target = $PlayerInterface/Target
 onready var health_bar = $PlayerInterface/Health
 onready var shield_bar = $PlayerInterface/Shield
+onready var Emenies_left = $PlayerInterface/EmemiesLeft
+onready var a = $PlayerInterface/Message
 onready var engine_sound = $engine_sound
 onready var shoot_sound = $shoot_sound
 var current_enemy_index = 0
@@ -144,6 +146,9 @@ func _ready():
 
 func _on_WeaponControls_fire():
 	shoot_sound.play()
+	
+				#Ui messages
+
 
 func Weapon_message():
 	$PlayerInterface/weapon_Ammo.text = str(WeaponControls.Max_Bullet-WeaponControls.Bullets_shot)
@@ -153,6 +158,7 @@ func Weapon_message():
 		$PlayerInterface/weapon.visible = true
 	else: 
 		$PlayerInterface/weapon.text = " "
+		
 func Weapon2_message():
 	$PlayerInterface/weapon_Ammo2.text = str(WeaponControls2.Max_Missiles-WeaponControls2.Missiles_shot)
 	
@@ -161,3 +167,5 @@ func Weapon2_message():
 		$PlayerInterface/weapon2.visible = true
 	else: 
 		$PlayerInterface/weapon2.text = " "
+		
+

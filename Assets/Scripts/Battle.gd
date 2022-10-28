@@ -13,7 +13,7 @@ func _ready():
 	$Battletrack.play(0)
 	randomize()
 	fade_in()
-	for i in range(10):
+	for i in range(1):
 		var new_enemy = enemy_two.instance()
 		add_child(new_enemy)
 		var offset = 1000
@@ -32,9 +32,16 @@ func fade_out():
 	tween.tween_property($Blindfold, "modulate:a", 1.0, 1)
 	
 func _process(delta):
+	
+	var Number_Of_Enemies = get_tree().get_nodes_in_group("enemy").size()
+	
 	if not phase_2:
 		var enemies = get_tree().get_nodes_in_group("enemy")
 		if len(enemies) <= 0:
+			player.a.visible = true
+			player.a.text = "New Ememies\nHave Came!"
+			player._on_Timer_timeout()
+			
 			phase_2 = true
 			for i in range(10):
 				var new_enemy = enemy_one.instance()
@@ -69,4 +76,5 @@ func _process(delta):
 		if len(enemies) <= 0:
 			phase_4 = true
 			get_tree().change_scene("res://Assets/Scenes/Outro.tscn")
-			
+	player.Emenies_left.text = "Number Of Cats Left: " + str(Number_Of_Enemies)
+	

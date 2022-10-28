@@ -3,7 +3,7 @@ extends Spatial
 export var speed = 2000
 var KILL_TIME = 15
 var timer = 0
-var Damage = 2
+var Damage = 5
 var entity_speed := 0.0
 	
 func _physics_process(delta):

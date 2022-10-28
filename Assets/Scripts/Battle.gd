@@ -67,6 +67,6 @@ func _process(delta):
 	if phase_3 and not phase_4:
 		var enemies = get_tree().get_nodes_in_group("enemy")
 		if len(enemies) <= 0:
-			$CatPlanet.start_boss_mode()
-			print("boss mode")
 			phase_4 = true
+			get_tree().change_scene("res://Assets/Scenes/Outro.tscn")
+			

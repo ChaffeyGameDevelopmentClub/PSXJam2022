@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Assets/Shaders/tunnel_speed_lines.tres" type="Material" id=1]
 [ext_resource path="res://Assets/particles/star_07.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Scripts/Opening.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Scripts/Outro.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Fonts/nasal.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Assets/Textures/shield.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Textures/bullet.png" type="Texture" id=6]
@@ -358,18 +358,6 @@ margin_bottom = 268.0
 custom_fonts/font = ExtResource( 4 )
 text = "ANOMALY
 DETECTED"
-
-[node name="Anomaly2" type="Label" parent="PlayerInterface"]
-margin_left = 3.0
-margin_top = 89.0
-margin_right = 139.0
-margin_bottom = 166.0
-custom_fonts/font = ExtResource( 4 )
-text = "W/S - throttle
-Q/E - rotate
-R - cycle target
-LMB- shoot
-RMB- missile"
 
 [node name="Warning" type="TextureRect" parent="PlayerInterface"]
 visible = false

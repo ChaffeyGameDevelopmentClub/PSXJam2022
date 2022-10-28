@@ -9,6 +9,7 @@ onready var blindfold = $Blindfold
 var default_color = Color("ee00ff")
 
 func _ready():
+	Input.MOUSE_MODE_VISIBLE
 	$music.play()
 
 func _on_Quit_Button_pressed():
@@ -44,7 +45,6 @@ func _on_Start_Button_pressed():
 
 func _on_Credits_Button_pressed():
 	$select.play()
-	pass # Replace with function body.
 
 func load_next_scene():
 	get_tree().change_scene_to(opening)

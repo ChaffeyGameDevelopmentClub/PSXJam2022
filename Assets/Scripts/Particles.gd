@@ -1,5 +1,8 @@
-extends Particles
+extends Spatial
 
+onready var explosion = $explosion
+onready var particles = $Particles
 
 func _ready():
-	one_shot = true
+	particles.one_shot = true
+	explosion.play()

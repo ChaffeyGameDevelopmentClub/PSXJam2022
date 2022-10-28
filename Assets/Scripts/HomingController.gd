@@ -6,10 +6,10 @@ onready var Homing_Missile = preload("res://Assets/Scenes/HomingMissile.tscn")
 var can_shoot = true
 var Is_Reloading = false
 var Missiles_shot = 0
-var Max_Missiles = 50
+var Max_Missiles = 5
 
 export var muzzle_speed = 20
-export var Seconds_Between_Shoots = .14
+export var Seconds_Between_Shoots = .5
 export var Reload_Time = 3
 
 func _ready():

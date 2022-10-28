@@ -14,7 +14,7 @@ signal fire
 export(PackedScene) var Bullet
 export var muzzle_speed = 20
 export var Seconds_Between_Shoots = .14
-export var Reload_Time = 3
+export var Reload_Time = 2
 func _ready():
 	RateOfFire_timer.wait_time = Seconds_Between_Shoots /1.0
 	Reload_Timer.wait_time = Reload_Time

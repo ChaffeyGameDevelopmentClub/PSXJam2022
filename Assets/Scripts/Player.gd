@@ -1,6 +1,7 @@
 extends ShipEntity
 
 onready var WeaponControls = $WeaponControls
+onready var WeaponControls2 = $WeaponControls/HomingWeapon
 onready var thrust_bar = $PlayerInterface/ThrustBar
 onready var shield = $Shield
 var current_thrust_setting: float = 0
@@ -57,6 +58,13 @@ func start_message(time, message):
 
 var last_enemy_count = 0
 func _physics_process(delta):
+	
+	
+	
+	
+	Weapon2_message()
+	Weapon_message()
+	
 	engine_sound.unit_db = current_thrust_setting - 50
 	engine_sound.unit_db = clamp(engine_sound.unit_db, current_thrust_setting - 70, 0)
 	engine_sound.pitch_scale = (current_thrust_setting/400) + 0.001
@@ -137,3 +145,19 @@ func _ready():
 func _on_WeaponControls_fire():
 	shoot_sound.play()
 
+func Weapon_message():
+	$PlayerInterface/weapon_Ammo.text = str(WeaponControls.Max_Bullet-WeaponControls.Bullets_shot)
+	
+	if WeaponControls.Is_Reloading:
+		$PlayerInterface/weapon.text = "Recharging Weapon"
+		$PlayerInterface/weapon.visible = true
+	else: 
+		$PlayerInterface/weapon.text = " "
+func Weapon2_message():
+	$PlayerInterface/weapon_Ammo2.text = str(WeaponControls2.Max_Missiles-WeaponControls2.Missiles_shot)
+	
+	if WeaponControls2.Is_Reloading:
+		$PlayerInterface/weapon2.text = "Recharging Weapon"
+		$PlayerInterface/weapon2.visible = true
+	else: 
+		$PlayerInterface/weapon2.text = " "

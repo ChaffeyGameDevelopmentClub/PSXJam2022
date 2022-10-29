@@ -2,13 +2,11 @@
 
 importer="antonWetzel.blenderImporter"
 type="PackedScene"
-path="res://.import/asteroid_2.blend-71f11dcaeadfeb2d432290debe9d9e18.scn"
+valid=false
 
 [deps]
 
 source_file="res://Assets/Models/asteroid_2.blend"
-dest_files=[ "res://.import/asteroid_2.blend-71f11dcaeadfeb2d432290debe9d9e18.scn" ]
-
 [params]
 
 apply_modifiers=true

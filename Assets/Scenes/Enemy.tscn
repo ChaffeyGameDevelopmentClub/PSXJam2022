@@ -36,6 +36,7 @@ transform = Transform( 2, 0, 0, 0, 3, 0, 0, 0, 1, 0.100387, 6.38445, -0.0338726 
 
 [node name="WeaponControls" parent="." index="11" instance=ExtResource( 5 )]
 Bullet = ExtResource( 6 )
+Seconds_Between_Shoots = 0.25
 
 [node name="Engine" type="AudioStreamPlayer3D" parent="." index="12"]
 stream = ExtResource( 7 )

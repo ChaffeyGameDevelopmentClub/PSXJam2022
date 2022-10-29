@@ -16,8 +16,8 @@ script = ExtResource( 10 )
 [node name="Player" parent="." instance=ExtResource( 2 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74227e-08, 0, -1, 0, 0, 0 )
 angular_damp = 0.0
-hull_integrity = 100.0
-shield_integrity = 70.0
+hull_integrity = 50.0
+shield_integrity = 100.0
 turn_handling = 100.0
 move_handling = 4.0
 thrust_strength = 300.0

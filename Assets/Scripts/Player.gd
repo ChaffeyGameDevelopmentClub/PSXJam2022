@@ -16,9 +16,10 @@ onready var a = $PlayerInterface/Message
 onready var engine_sound = $engine_sound
 onready var shoot_sound = $shoot_sound
 var current_enemy_index = 0
+onready var Death = preload("res://DeathSence.tscn")
 
 func  Get_Destroyed():
-	pass
+	get_tree().change_scene_to(Death)
 
 func _on_Hurtbox_area_entered(area):
 	return

@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 onready var quit = $Control2/Quit_Button/quitbox
 onready var credits = $Control2/Credits_Button/creditsbox
@@ -45,6 +45,7 @@ func _on_Start_Button_pressed():
 
 func _on_Credits_Button_pressed():
 	$select.play()
+	get_tree().change_scene("res://addons/CREDITS/GodotCredits.tscn")
 
 func load_next_scene():
 	get_tree().change_scene_to(opening)

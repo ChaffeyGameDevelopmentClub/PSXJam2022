@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/NeonDootDoot.mp3-1833c67c57c462ddb1bffe57eb4806b6.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/NeonDootDoot.mp3"
+dest_files=[ "res://.import/NeonDootDoot.mp3-1833c67c57c462ddb1bffe57eb4806b6.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

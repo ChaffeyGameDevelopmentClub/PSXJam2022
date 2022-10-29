@@ -5,7 +5,7 @@
 [ext_resource path="res://Assets/Fonts/hypik_small.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Assets/MainMenu.gd" type="Script" id=4]
 [ext_resource path="res://Assets/SFX/uiselect.wav" type="AudioStream" id=5]
-[ext_resource path="res://Assets/SFX/chill-lo-fi-hip-hop-8308.mp3" type="AudioStream" id=6]
+[ext_resource path="res://Assets/SFX/NeonDootDoot.mp3" type="AudioStream" id=6]
 
 [sub_resource type="Shader" id=1]
 code = "/*
@@ -44,7 +44,7 @@ shader_param/height = 0.6
 shader_param/speed = 0.2
 shader_param/scale = Vector2( 2, 16 )
 
-[node name="MainMenu" type="Node2D"]
+[node name="MainMenu" type="Control"]
 script = ExtResource( 4 )
 
 [node name="Camera" type="Camera" parent="."]

@@ -2,11 +2,13 @@
 
 importer="antonWetzel.blenderImporter"
 type="PackedScene"
-valid=false
+path="res://.import/knife.blend-8af8acb7ba137453d9ed87d2eaa609a0.scn"
 
 [deps]
 
 source_file="res://Assets/Models/knife.blend"
+dest_files=[ "res://.import/knife.blend-8af8acb7ba137453d9ed87d2eaa609a0.scn" ]
+
 [params]
 
 apply_modifiers=true

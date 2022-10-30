@@ -34,12 +34,6 @@ mesh = SubResource( 2 )
 
 [node name="PlayerInterface" parent="." index="9" instance=ExtResource( 5 )]
 
-[node name="Warning" parent="PlayerInterface" index="13"]
-visible = false
-
-[node name="WarningMessage" parent="PlayerInterface" index="15"]
-visible = true
-
 [node name="Shield" parent="." index="10"]
 invert_faces = true
 

@@ -60,6 +60,7 @@ var credits = [
 		"Jessica Setiadhi",
 		"Angela Ybarra",
 		"Sean Castro Melendez",
+		"@captainbrownie_chanchan",
 		"David Reyes"
 	],[
 		"External",
